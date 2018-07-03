@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="menu" prefHeight="620.0" prefWidth="900.0" style="-fx-background-color: #87CEFA;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.Estoque_De_Medicamentos.controllerView.ControleMenu">
+   <children>
+      <ImageView fitHeight="245.0" fitWidth="1786.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="509.8488540649414" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-868.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../../../files/teladeCima.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="632.0" fitWidth="1378.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-188.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-460.0" AnchorPane.topAnchor="176.0">
+         <image>
+            <Image url="@../../../../../files/meio.jpg" />
+         </image></ImageView>
+      <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" layoutX="177.0" layoutY="128.0" prefHeight="31.0" prefWidth="559.0" AnchorPane.leftAnchor="177.0" AnchorPane.rightAnchor="164.0">
+         <children>
+            <MenuButton fx:id="menuVenda" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Venda" textFill="#504c78">
+               <items>
+                  <MenuItem fx:id="ItemVenda" mnemonicParsing="false" onAction="#actionItem" text="Venda" />
+               </items>
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="15.0" />
+               </font>
+            </MenuButton>
+            <MenuButton fx:id="menuCadastro" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" text="Cadastro" textFill="#504c78">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="15.0" />
+               </font>
+               <items>
+                  <MenuItem fx:id="ItemProduto" mnemonicParsing="false" onAction="#actionItem" text="Produto" />
+                  <MenuItem fx:id="ItemCliente" mnemonicParsing="false" onAction="#actionItem" text="Cliente" />
+                  <MenuItem fx:id="ItemFuncionario" mnemonicParsing="false" onAction="#actionItem" text="Funcionário" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="menuConsulta" mnemonicParsing="false" prefHeight="31.0" prefWidth="107.0" text="Consulta" textFill="#504c78">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="15.0" />
+               </font>
+               <items>
+                  <MenuItem fx:id="ItemConsultaCliente" mnemonicParsing="false" onAction="#actionItem" text="Cliente" />
+                  <MenuItem fx:id="ItemConsultaProduto" mnemonicParsing="false" onAction="#actionItem" text="Produto" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="menuRelatorio" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" text="Relatório" textFill="#504c78">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="15.0" />
+               </font>
+               <items>
+                  <MenuItem fx:id="ItemRelaVF" mnemonicParsing="false" onAction="#actionItem" text="Relatório Venda Por Funcionário" />
+                  <MenuItem fx:id="ItemRelaCC" mnemonicParsing="false" onAction="#actionItem" text="Relatório Compra Por Cliente" />
+                  <MenuItem fx:id="ItemRelaSP" mnemonicParsing="false" onAction="#actionItem" text="Relatório Saída Produto" />
+                  <MenuItem fx:id="ItemRelaEP" mnemonicParsing="false" onAction="#actionItem" text="Relatório Entrada Produto" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="menuOpcao" mnemonicParsing="false" text="Opções" textFill="#504c78">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="15.0" />
+               </font>
+               <items>
+                  <MenuItem fx:id="ItemSair" mnemonicParsing="false" onAction="#actionItem" text="Sair" />
+               </items>
+            </MenuButton>
+         </children>
+      </FlowPane>
+      <AnchorPane fx:id="pane" layoutX="86.0" layoutY="176.0" prefHeight="429.0" prefWidth="747.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="176.0" />
+   </children>
+</AnchorPane>
