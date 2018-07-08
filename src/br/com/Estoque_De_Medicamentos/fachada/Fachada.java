@@ -14,7 +14,8 @@ import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Cliente;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
 import br.com.Estoque_De_Medicamentos.entidade.Endereco;
-import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
+import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
+
 
 
 public class Fachada implements IFachada{
@@ -42,92 +43,93 @@ public class Fachada implements IFachada{
 	   }
 
 	@Override
-	public void administradorSalvar(Administrador administrador) {
+	public void administradorSalvar(Administrador administrador)throws BusinessException {
 		 businessAdministrador.salvar(administrador);		
 	}
 
 	@Override
-	public void administradorEditar(Administrador administrador) {
+	public void administradorEditar(Administrador administrador)throws BusinessException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Administrador administradorBuscarPorId(int id) throws DaoException {
+	public Administrador administradorBuscarPorId(int id) throws BusinessException {
 		return businessAdministrador.buscarPorId(id);
 	}
 
 	@Override
-	public Administrador administradorBuscarPorCpf(String cpf) {
+	public Administrador administradorBuscarPorCpf(String cpf)throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Administrador> administradorBuscarPorBusca(String busca) {
+	public List<Administrador> administradorBuscarPorBusca(String busca)throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void clienteSalvar(Cliente cliente) {
+	public void clienteSalvar(Cliente cliente)throws BusinessException {
+		
 		businessCliente.salvar(cliente);
 		
 	}
 
 	@Override
-	public void clienteEditar(Cliente cliente) {
+	public void clienteEditar(Cliente cliente)throws BusinessException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Cliente clienteBuscarPorId(int id) throws DaoException {
+	public Cliente clienteBuscarPorId(int id) throws BusinessException {
 		return businessCliente.buscarPorId(id);
 	}
 
 	@Override
-	public Cliente clienteBuscarPorCpf(String cpf) {
+	public Cliente clienteBuscarPorCpf(String cpf) throws BusinessException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Cliente> clienteBuscarPorBusca(String busca) {
+	public List<Cliente> clienteBuscarPorBusca(String busca)throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void contatoSalvar(Contato contato) {
+	public void contatoSalvar(Contato contato) throws BusinessException{
 		businessContato.salvar(contato);
 		
 	}
 
 	@Override
-	public void contatoEditar(Contato contato) {
+	public void contatoEditar(Contato contato)throws BusinessException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Contato contatoBuscarPorId(int id) throws DaoException {
+	public Contato contatoBuscarPorId(int id) throws BusinessException {
 		return businessContato.buscarPorId(id);
 	}
 
 	@Override
-	public void enderecoSalvar(Endereco endereco) {
+	public void enderecoSalvar(Endereco endereco) throws BusinessException{
 		businessEndereco.salvar(endereco);	
 	}
 
 	@Override
-	public void enderecoEditar(Endereco endereco) {
+	public void enderecoEditar(Endereco endereco)throws BusinessException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Endereco enderecoBuscarPorId(int id) throws DaoException {
+	public Endereco enderecoBuscarPorId(int id) throws BusinessException {
 		return businessEndereco.buscarPorId(id);
 	}
 

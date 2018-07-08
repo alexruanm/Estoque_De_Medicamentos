@@ -3,6 +3,7 @@ package br.com.Estoque_De_Medicamentos.Businness;
 import br.com.Estoque_De_Medicamentos.dao.DaoContato;
 import br.com.Estoque_De_Medicamentos.dao.IDaoContato;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
+import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 
 public class BusinessContato implements  IBusinessContato {
@@ -14,19 +15,24 @@ public class BusinessContato implements  IBusinessContato {
 	}
 
 	@Override
-	public void salvar(Contato contato) {
+	public void salvar(Contato contato) throws BusinessException {
 		this.contato.salvar(contato);		
 	}
 
 	@Override
-	public void editar(Contato contato) {
+	public void editar(Contato contato) throws BusinessException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Contato buscarPorId(int id) throws DaoException {
-		return this.contato.buscarPorId(id);
+	public Contato buscarPorId(int id) throws BusinessException {
+		try {
+			return this.contato.buscarPorId(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
 	}
 
 }

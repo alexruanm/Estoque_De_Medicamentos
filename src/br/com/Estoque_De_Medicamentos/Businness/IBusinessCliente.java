@@ -8,7 +8,7 @@ import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 
 public interface IBusinessCliente {
 	
-	 public void salvar(Cliente cliente)throws BusinessException, DaoException;
+	 public void salvar(Cliente cliente)throws BusinessException;
 	 public void editar(Cliente cliente)throws BusinessException;
 	 public Cliente buscarPorId(int id)throws BusinessException;
 	 public Cliente buscarPorCpf(String cpf)throws BusinessException;

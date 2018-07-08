@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Cliente;
+import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.fachada.Fachada;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
@@ -75,7 +76,7 @@ public class DaoCliente implements IDaoCliente{
 	            this.conexao.close();
 	            return cliente;
 
-	        } catch (SQLException ex) {
+	        } catch (SQLException | BusinessException ex) {
 	            ex.printStackTrace();
 	            throw new DaoException("PROBLEMA AO CONSULTAR ADMINISTRADOR - CONTATE O PROFISSIONAL QUALIFICADO");
 	        }
@@ -111,7 +112,7 @@ public class DaoCliente implements IDaoCliente{
 				
 				clientes.add(cliente);
 			}
-		} catch (SQLException ex) {
+		} catch (SQLException | BusinessException ex) {
 			
 			throw new DaoException("PROBLEMA AO CONSULTAR Clientes - CONTATE O ADMINISTRADOR");
 			

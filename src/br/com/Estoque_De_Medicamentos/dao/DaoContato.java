@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
+import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.fachada.Fachada;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
@@ -70,6 +71,9 @@ public class DaoContato implements IDaoContato{
 	        } catch (DaoException e) {
 				// TODO Auto-generated catch block
 				throw new DaoException("PROBLEMA AO CONSULTAR CONTATO - Contate o ADM");
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		return null;
 	}

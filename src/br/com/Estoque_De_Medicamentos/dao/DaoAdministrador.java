@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
+import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.fachada.Fachada;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
@@ -74,7 +75,7 @@ public class DaoAdministrador implements IDaoAdministrador{
 	            this.conexao.close();
 	            return administrador;
 
-	        } catch (SQLException ex) {
+	        } catch (SQLException | BusinessException ex) {
 	            ex.printStackTrace();
 	            throw new DaoException("PROBLEMA AO CONSULTAR ADMINISTRADOR - CONTATE O PROFISSIONAL QUALIFICADO");
 	        }
@@ -110,7 +111,7 @@ public class DaoAdministrador implements IDaoAdministrador{
 				
 				administradores.add(administrador);
 			}
-		} catch (SQLException ex) {
+		} catch (SQLException | BusinessException ex) {
 			
 			throw new DaoException("PROBLEMA AO CONSULTAR ADMINISTRADOR - CONTATE O PROFISSIONAL QUALIFICADO");
 			
