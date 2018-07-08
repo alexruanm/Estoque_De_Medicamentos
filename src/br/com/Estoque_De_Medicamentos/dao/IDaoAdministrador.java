@@ -12,6 +12,6 @@ public interface IDaoAdministrador {
 	 public void editar(Administrador administrador);
 	 public Administrador buscarPorId(int id)throws DaoException;
 	 public Administrador buscarPorCpf(String cpf);
-	 public List<Administrador> buscarPorBusca(String busca);
+	 public List<Administrador> buscarPorBusca(String busca) throws DaoException;
 
 }

@@ -16,10 +16,10 @@ public class DaoFuncionario implements IDaoFuncionario{
 	@Override
 	public void salvar(Funcionario funcionario) {
 		
-		Integer id_endereco, id_contato;
+		Integer id_endereco;
 		
 		id_endereco = ConexaoSQL.getCurrentValorTabela("endereco");
-		id_contato = ConexaoSQL.getCurrentValorTabela("contato");
+		
 		
 		try {
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
@@ -30,7 +30,7 @@ public class DaoFuncionario implements IDaoFuncionario{
             statement.setString(3, funcionario.getNome());
             statement.setString(4, funcionario.getCpf());
             statement.setInt(5, id_endereco);
-            statement.setInt(6, id_contato);
+            statement.setString(6, funcionario.getCelular());
             statement.executeUpdate();
             this.conexao.close();
 			

@@ -39,8 +39,8 @@ public class SQLEstoque {
 	public static final String insert_Cliente_All="insert into cliente (nome," + 
 			"  cpf," + 
 			"  endereco_cliente"
-			+ "contato_id) "
-			+ "values (?,?,?) ";
+			+ "celular) "
+			+ "values (?,?,?,?) ";
 	
 	// SQL Funcionario
 	public static final String insert_Funcionario_All="insert into endereco (login," + 
@@ -48,7 +48,7 @@ public class SQLEstoque {
 			"  nome," + 
 			"  cpf," + 
 			"  endereco_fun "
-			+ "contato_id) "
+			+ "celular) "
 			+ "values (?,?,?,?,?,?) ";
 	
 	// SQL Administrador
@@ -57,9 +57,9 @@ public class SQLEstoque {
 			"nome," + 
 			"cpf," + 
 			"endereco_fun," + 
-			"contato_id)" + 
+			"celular)" + 
 			"values (?,?,?,?,?,?) ";
 	// SQL Contato
-	public static final String insert_Contato_All="insert into contato (telefone01,telefone02) "
+	public static final String insert_Contato_All="insert into contato (descricao,id_cliente) "
 			+ "values (?,?) ";
 }

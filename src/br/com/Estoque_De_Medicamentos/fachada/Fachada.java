@@ -82,7 +82,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public Cliente clienteBuscarPorId(int id) {
+	public Cliente clienteBuscarPorId(int id) throws DaoException {
 		return businessCliente.buscarPorId(id);
 	}
 

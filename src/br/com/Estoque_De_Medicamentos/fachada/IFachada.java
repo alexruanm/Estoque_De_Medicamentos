@@ -22,7 +22,7 @@ public interface IFachada  {
 	 
 	 public void clienteSalvar(Cliente cliente);	 
 	 public void clienteEditar(Cliente cliente);	 
-	 public Cliente clienteBuscarPorId(int id);
+	 public Cliente clienteBuscarPorId(int id) throws DaoException;
 	 public Cliente clienteBuscarPorCpf(String cpf);
 	 public List<Cliente> clienteBuscarPorBusca(String busca);
 	 

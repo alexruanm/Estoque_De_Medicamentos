@@ -2,22 +2,26 @@ package br.com.Estoque_De_Medicamentos.entidade;
 
 public class Contato {
 	private Integer id;
-	private String telefone01;
-	private String telefone02;
-	
-	public String getTelefone01() {
-		return telefone01;
+	private String descricao;
+	private Cliente cliente;
+	public Integer getId() {
+		return id;
 	}
-	public void setTelefone01(String telefone01) {
-		this.telefone01 = telefone01;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getTelefone02() {
-		return telefone02;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setTelefone02(String telefone02) {
-		this.telefone02 = telefone02;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
-	
-	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 
 }

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
+import br.com.Estoque_De_Medicamentos.fachada.Fachada;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
 import br.com.Estoque_De_Medicamentos.sql.SQLEstoque;
 
@@ -18,12 +19,15 @@ public class DaoContato implements IDaoContato{
 	
 	@Override
 	public void salvar(Contato contato) {
+        Integer id_cliente;
+		
+		id_cliente = ConexaoSQL.getCurrentValorTabela("cliente");
 		try {
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
 			this.statement = conexao.prepareStatement(SQLEstoque.insert_Contato_All);	
 			
-            statement.setString(1, contato.getTelefone01());
-            statement.setString(2, contato.getTelefone02());
+            statement.setString(1, contato.getDescricao());
+            statement.setInt(2,id_cliente );
        
             statement.executeUpdate();
             this.conexao.close();
@@ -52,8 +56,8 @@ public class DaoContato implements IDaoContato{
 	            ResultSet result = this.statement.executeQuery();
 	            Contato contato= new Contato();
 	            if (result.next()) {	            	
-	            	contato.setTelefone01(result.getString(1));
-	            	contato.setTelefone02(result.getString(2));
+	            	contato.setDescricao(result.getString(1));
+	            	contato.setCliente(Fachada.getInstance().clienteBuscarPorId(result.getInt(2)));
 	            } else {
 	                throw new DaoException("Contato não Exister");
 	            }
