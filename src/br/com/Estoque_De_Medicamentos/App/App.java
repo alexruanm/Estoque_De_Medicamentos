@@ -7,7 +7,6 @@ import br.com.Estoque_De_Medicamentos.entidade.Endereco;
 import br.com.Estoque_De_Medicamentos.entidade.Tela;
 import br.com.Estoque_De_Medicamentos.fachada.Fachada;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
-import br.com.Estoque_De_Medicamentos.view.Mensagens;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

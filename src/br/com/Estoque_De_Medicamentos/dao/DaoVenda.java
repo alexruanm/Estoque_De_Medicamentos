@@ -50,25 +50,23 @@ public class DaoVenda implements IDaoVenda {
 	public Venda buscarPorId(int id)throws DaoException {
 		try {
     		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-			this.statement = conexao.prepareStatement(SQLEstoque.insert_Administrador_All);	
+			this.statement = conexao.prepareStatement(SQLEstoque.insert_Venda_All);	
             this.statement.setInt(1, id);
 
             ResultSet result = this.statement.executeQuery();
-            Administrador administrador= new Administrador();
+            Venda venda= new Venda();
             if (result.next()) {
             	
-            	administrador.setLogin(result.getString(1));
-            	administrador.setSenha(result.getString(2));
-                administrador.setNome(result.getString(3));
-                administrador.setCpf(result.getString(4));
-                administrador.setCelular(result.getString(5));
-                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+            	venda.setComprador(result.getString(1));
+            	venda.setVendedor(result.getString(2));
+            	venda.setDataComprar(result.getDate(3));
+            	venda.setItemVenda(Fachada.getInstance().itemVendaBuscarPorId(result.getInt(4)));
             	                
             } else {
-                throw new DaoException("ADMINISTRADOR NÃO EXISTE");
+                throw new DaoException("Venda NÃO EXISTE");
             }
             this.conexao.close();
-            return administrador;
+            return venda;
 
         } catch (SQLException | BusinessException ex) {
             ex.printStackTrace();

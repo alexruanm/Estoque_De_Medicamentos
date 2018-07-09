@@ -6,7 +6,6 @@ import javax.print.DocFlavor.URL;
 
 import br.com.Estoque_De_Medicamentos.App.App;
 import br.com.Estoque_De_Medicamentos.entidade.Tela;
-import br.com.Estoque_De_Medicamentos.view.Mensagens;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;

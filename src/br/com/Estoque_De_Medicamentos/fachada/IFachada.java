@@ -7,6 +7,7 @@ import br.com.Estoque_De_Medicamentos.entidade.Endereco;
 import br.com.Estoque_De_Medicamentos.entidade.ItemProduto;
 import br.com.Estoque_De_Medicamentos.entidade.ItemVenda;
 import br.com.Estoque_De_Medicamentos.entidade.Produto;
+import br.com.Estoque_De_Medicamentos.entidade.Venda;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
@@ -39,7 +40,23 @@ public interface IFachada  {
 	 public void enderecoEditar(Endereco endereco)throws BusinessException;
 	 public Endereco enderecoBuscarPorId(int id) throws BusinessException;
 	 
-	
+	 public void itemProdutoSalvar(ItemProduto itemProduto)throws BusinessException;
+	 public void itemProdutoEditar(ItemProduto itemProduto)throws BusinessException;
+	 public ItemProduto itemProdutoBuscarPorId(int id)throws BusinessException;
+	 
+	 public void itemVendaSalvar(ItemVenda itemVenda)throws BusinessException;
+	 public void itemVendaEditar(ItemVenda itemVenda)throws BusinessException;
+	 public ItemVenda itemVendaBuscarPorId(int id)throws BusinessException;
+	 
+	 public void produtoSalvar(Produto produto)throws BusinessException;
+	 public void produtoEditar(Produto produto)throws BusinessException;
+	 public Produto produtoBuscarPorId(int id)throws BusinessException;
+	 public List<Produto> produtoBuscarPorBusca(String busca)throws BusinessException;
+	 
+	 public void vendaSalvar(Venda venda)throws BusinessException;
+	 public void vendaEditar(Venda venda)throws BusinessException;
+	 public Venda vendaBuscarPorId(int id)throws BusinessException;
+	 public List<Venda> vendaBuscarPorBusca(String busca)throws BusinessException;
 
 
 }

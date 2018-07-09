@@ -61,13 +61,13 @@ public class DaoProduto implements IDaoProduto {
             	produto.setFornecedor(result.getString(1));
             	produto.setData_entrega(result.getDate(2));
             	produto.setQuantidade(result.getInt(3));
-            	produto.setItemProduto(result.getInt(4));
+            	produto.setItemProduto(Fachada.getInstance().itemProdutoBuscarPorId(result.getInt(4)));
             	                
             } else {
                 throw new DaoException("ADMINISTRADOR NÃO EXISTE");
             }
             this.conexao.close();
-            return administrador;
+            return produto;
 
         } catch (SQLException | BusinessException ex) {
             ex.printStackTrace();

@@ -2,15 +2,26 @@ package br.com.Estoque_De_Medicamentos.Businness;
 
 import java.util.List;
 
+import br.com.Estoque_De_Medicamentos.dao.DaoProduto;
+import br.com.Estoque_De_Medicamentos.dao.IDaoProduto;
 import br.com.Estoque_De_Medicamentos.entidade.Produto;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 
 public class BusinessProduto implements IBusinessProduto {
+	
+	private IDaoProduto daoProduto;
+	
+	public BusinessProduto() {
+		this.daoProduto= new DaoProduto();
+	}
 
 	@Override
 	public void salvar(Produto produto) throws BusinessException {
-		// TODO Auto-generated method stub
-		
+		try {
+			this.daoProduto.salvar(produto);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}	
 	}
 
 	@Override
@@ -21,7 +32,11 @@ public class BusinessProduto implements IBusinessProduto {
 
 	@Override
 	public Produto buscarPorId(int id) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			return this.daoProduto.buscarPorId(id);
+		} catch (Exception e) {
+			
+		}
 		return null;
 	}
 

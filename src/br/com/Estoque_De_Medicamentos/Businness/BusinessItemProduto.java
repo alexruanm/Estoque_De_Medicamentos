@@ -7,7 +7,7 @@ import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 
 public class BusinessItemProduto implements IBusinessItemProduto {
 	
-	IDaoItemProduto daoItemProduto;
+	private IDaoItemProduto daoItemProduto;
 	
 	public BusinessItemProduto() {
 		this.daoItemProduto= new DaoItemProduto();
