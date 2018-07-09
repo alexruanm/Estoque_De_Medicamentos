@@ -8,8 +8,8 @@ import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 
 public interface IDaoContato {
 
-	 public void salvar(Contato contato);
-	 public void editar(Contato contato);
+	 public void salvar(Contato contato)throws DaoException;
+	 public void editar(Contato contato)throws DaoException;
 	 public Contato buscarPorId(int id) throws DaoException;
 	
 }

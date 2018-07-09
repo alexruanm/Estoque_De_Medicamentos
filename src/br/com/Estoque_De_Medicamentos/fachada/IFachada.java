@@ -4,7 +4,11 @@ import java.util.List;
 
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Endereco;
+import br.com.Estoque_De_Medicamentos.entidade.ItemProduto;
+import br.com.Estoque_De_Medicamentos.entidade.ItemVenda;
+import br.com.Estoque_De_Medicamentos.entidade.Produto;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
+import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
 import br.com.Estoque_De_Medicamentos.entidade.Cliente;
 
@@ -34,6 +38,8 @@ public interface IFachada  {
 	 public void enderecoSalvar(Endereco endereco)throws BusinessException;
 	 public void enderecoEditar(Endereco endereco)throws BusinessException;
 	 public Endereco enderecoBuscarPorId(int id) throws BusinessException;
+	 
+	
 
 
 }

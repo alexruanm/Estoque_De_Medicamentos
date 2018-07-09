@@ -8,10 +8,10 @@ import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 
 public interface IDaoAdministrador {
 	
-	 public void salvar(Administrador administrador);
-	 public void editar(Administrador administrador);
+	 public void salvar(Administrador administrador)throws DaoException;
+	 public void editar(Administrador administrador)throws DaoException;
 	 public Administrador buscarPorId(int id)throws DaoException;
-	 public Administrador buscarPorCpf(String cpf);
+	 public Administrador buscarPorCpf(String cpf)throws DaoException;
 	 public List<Administrador> buscarPorBusca(String busca) throws DaoException;
 
 }

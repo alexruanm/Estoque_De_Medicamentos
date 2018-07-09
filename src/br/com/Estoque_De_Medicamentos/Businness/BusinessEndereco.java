@@ -16,7 +16,12 @@ public class BusinessEndereco implements IBusinessEndereco{
 
 	@Override
 	public void salvar(Endereco endereco) throws BusinessException {
-		this.endereco.salvar(endereco);		
+		try {
+			this.endereco.salvar(endereco);		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 	@Override

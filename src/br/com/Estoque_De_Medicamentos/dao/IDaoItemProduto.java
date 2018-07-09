@@ -4,12 +4,13 @@ import java.util.List;
 
 import br.com.Estoque_De_Medicamentos.entidade.Cliente;
 import br.com.Estoque_De_Medicamentos.entidade.ItemProduto;
+import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 
 public interface IDaoItemProduto {
 	
-	 public void salvar(ItemProduto itemProduto);
-	 public void editar(ItemProduto itemProduto);
-	 public ItemProduto buscarPorId(int id);
-	 public List<Cliente> buscarPorBusca(String busca);
+	 public void salvar(ItemProduto itemProduto)throws DaoException;
+	 public void editar(ItemProduto itemProduto)throws DaoException;
+	 public ItemProduto buscarPorId(int id)throws DaoException;
+	
 
 }

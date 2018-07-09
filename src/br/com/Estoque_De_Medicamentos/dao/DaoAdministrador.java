@@ -23,7 +23,7 @@ public class DaoAdministrador implements IDaoAdministrador{
 	private PreparedStatement statement;
 	
 	@Override
-	public void salvar(Administrador administrador) {
+	public void salvar(Administrador administrador)throws DaoException {
 		Integer id_endereco;
 		
 		id_endereco = ConexaoSQL.getCurrentValorTabela("endereco");

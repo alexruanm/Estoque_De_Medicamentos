@@ -16,7 +16,12 @@ public class BusinessContato implements  IBusinessContato {
 
 	@Override
 	public void salvar(Contato contato) throws BusinessException {
-		this.contato.salvar(contato);		
+		try {
+			this.contato.salvar(contato);	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+			
 	}
 
 	@Override
