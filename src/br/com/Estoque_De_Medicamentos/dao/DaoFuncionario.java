@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.Estoque_De_Medicamentos.entidade.Administrador;
+
 import br.com.Estoque_De_Medicamentos.entidade.Funcionario;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
@@ -48,7 +48,26 @@ public class DaoFuncionario implements IDaoFuncionario{
 	}
 	@Override
 	public void editar(Funcionario funcionario)throws DaoException {
-		// TODO Auto-generated method stub
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement(SQLEstoque.update_Funcionario_All);	
+			
+			statement.setString(1, funcionario.getLogin());
+            statement.setString(2, funcionario.getSenha());
+            statement.setString(3, funcionario.getNome());
+            statement.setString(4, funcionario.getCpf());
+            statement.setInt(5, funcionario.getEndereco().getId());
+            statement.setString(6, funcionario.getCelular());
+            
+            statement.setInt(7, funcionario.getId());
+						
+			statement.executeUpdate();
+			statement.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DaoException("Erro ao Atualizar  Funcionário");
+		}
 		
 	}
 	@Override

@@ -4,14 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-
-import br.com.Estoque_De_Medicamentos.entidade.Administrador;
-import br.com.Estoque_De_Medicamentos.entidade.Cliente;
 import br.com.Estoque_De_Medicamentos.entidade.ItemProduto;
-import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
-import br.com.Estoque_De_Medicamentos.fachada.Fachada;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
 import br.com.Estoque_De_Medicamentos.sql.SQLEstoque;
 
@@ -42,7 +36,22 @@ public class DaoItemProduto implements IDaoItemProduto {
 	}
 	@Override
 	public void editar(ItemProduto itemProduto)throws DaoException {
-		// TODO Auto-generated method stub
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement(SQLEstoque.update_ItemProduto_All);	
+			
+			statement.setString(1, itemProduto.getNome());
+			statement.setDate(2, itemProduto.getValidade());
+			statement.setDate(3, itemProduto.getData_fabricacao());
+			statement.setDouble(4, itemProduto.getPreco());
+						
+			statement.executeUpdate();
+			statement.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DaoException("Erro ao Atualizar  Item Produto");
+		}
 		
 	}
 	@Override

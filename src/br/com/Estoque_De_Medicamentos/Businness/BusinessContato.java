@@ -26,7 +26,11 @@ public class BusinessContato implements  IBusinessContato {
 
 	@Override
 	public void editar(Contato contato) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			this.contato.editar(contato);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 

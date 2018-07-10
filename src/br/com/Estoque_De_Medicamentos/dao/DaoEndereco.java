@@ -5,9 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.Estoque_De_Medicamentos.entidade.Administrador;
-import br.com.Estoque_De_Medicamentos.entidade.Cliente;
-import br.com.Estoque_De_Medicamentos.entidade.Contato;
+
 import br.com.Estoque_De_Medicamentos.entidade.Endereco;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
@@ -20,7 +18,7 @@ public class DaoEndereco implements IDaoEndereco{
 	private PreparedStatement statement;
 	
 	@Override
-	public void salvar(Endereco endereco) {
+	public void salvar(Endereco endereco) throws DaoException {
 		try {
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
 			this.statement = conexao.prepareStatement(SQLEstoque.insert_Endereco_All);	
@@ -36,13 +34,29 @@ public class DaoEndereco implements IDaoEndereco{
 			// TODO: handle exception
 		}
 
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void editar(Endereco endereco) {
-		// TODO Auto-generated method stub
+	public void editar(Endereco endereco) throws DaoException {
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement(SQLEstoque.update_Endereco_All);	
+			
+		    statement.setString(1, endereco.getBairro());
+            statement.setString(2, endereco.getCidade());
+            statement.setString(3, endereco.getRua());
+            statement.setInt(4, endereco.getNumero());
+            
+            statement.setInt(5, endereco.getId());
+						
+			statement.executeUpdate();
+			statement.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DaoException("Erro ao Atualizar  Endereço");
+		}
 		
 	}
 

@@ -29,7 +29,11 @@ public class BusinessCliente implements IBusinessCliente {
 
 	@Override
 	public void editar(Cliente cliente)throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			this.cliente.editar(cliente);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 
@@ -52,7 +56,11 @@ public class BusinessCliente implements IBusinessCliente {
 
 	@Override
 	public List<Cliente> buscarPorBusca(String busca)throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			this.cliente.buscarPorBusca(busca);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 

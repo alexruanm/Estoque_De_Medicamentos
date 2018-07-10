@@ -18,19 +18,31 @@ public class BusinessAdministrador implements IBusinessAdministrador  {
 
 	@Override
 	public void salvar(Administrador administrador) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			this.administrador.salvar(administrador);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 
 	@Override
 	public void editar(Administrador administrador) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			this.administrador.editar(administrador);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 
 	@Override
 	public Administrador buscarPorId(int id) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			return this.administrador.buscarPorId(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
@@ -42,7 +54,11 @@ public class BusinessAdministrador implements IBusinessAdministrador  {
 
 	@Override
 	public List<Administrador> buscarPorBusca(String busca) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			return this.administrador.buscarPorBusca(busca);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 

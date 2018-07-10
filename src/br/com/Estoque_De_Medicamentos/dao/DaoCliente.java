@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Cliente;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
@@ -49,7 +48,24 @@ public class DaoCliente implements IDaoCliente{
 
 	@Override
 	public void editar(Cliente cliente)throws DaoException {
-		// TODO Auto-generated method stub
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement(SQLEstoque.update_Cliente_All);	
+			
+			statement.setString(1, cliente.getNome());
+			statement.setString(2, cliente.getCpf());
+			statement.setInt(3, cliente.getEndereco().getId());
+			statement.setString(4, cliente.getCelular());
+			
+			statement.setInt(5, cliente.getId());
+						
+			statement.executeUpdate();
+			statement.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DaoException("Erro ao Atualizar  Cliente");
+		}
 		
 	}
 

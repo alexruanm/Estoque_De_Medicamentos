@@ -19,7 +19,7 @@ public class DaoContato implements IDaoContato{
 	private PreparedStatement statement;
 	
 	@Override
-	public void salvar(Contato contato) {
+	public void salvar(Contato contato)throws DaoException {
         Integer id_cliente;
 		
 		id_cliente = ConexaoSQL.getCurrentValorTabela("cliente");
@@ -42,8 +42,23 @@ public class DaoContato implements IDaoContato{
 	}
 
 	@Override
-	public void editar(Contato contato) {
-		// TODO Auto-generated method stub
+	public void editar(Contato contato)throws DaoException {
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement(SQLEstoque.update_Contato_All);	
+			
+			 statement.setString(1, contato.getDescricao());
+	         statement.setInt(2,contato.getCliente().getId() );
+	         
+	         statement.setInt(3, contato.getId());
+						
+			statement.executeUpdate();
+			statement.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DaoException("Erro ao Atualizar  Contato");
+		}
 		
 	}
 

@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-
-import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Venda;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
@@ -43,7 +42,24 @@ public class DaoVenda implements IDaoVenda {
 	}
 	@Override
 	public void editar(Venda venda) throws DaoException{
-		// TODO Auto-generated method stub
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement(SQLEstoque.update_Venda_All);	
+			
+			statement.setString(1, venda.getComprador());
+            statement.setString(2, venda.getVendedor());
+            statement.setDate(3, venda.getDataComprar());
+            statement.setInt(4,venda.getItemVenda().getId());
+            
+            statement.setInt(5, venda.getId());
+						
+			statement.executeUpdate();
+			statement.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DaoException("Erro ao Atualizar  Venda");
+		}
 		
 	}
 	@Override
@@ -75,8 +91,32 @@ public class DaoVenda implements IDaoVenda {
 	}
 	@Override
 	public List<Venda> buscarPorBusca(String busca)throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Venda> vendas = new ArrayList<>();
+
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement("SELECT * FROM venda");
+	
+			ResultSet result = this.statement.executeQuery();
+			Venda venda;
+			while (result.next()) {
+				
+				venda=new Venda();
+				
+		     	venda.setComprador(result.getString(1));
+            	venda.setVendedor(result.getString(2));
+            	venda.setDataComprar(result.getDate(3));
+            	venda.setItemVenda(Fachada.getInstance().itemVendaBuscarPorId(result.getInt(4)));
+				
+				vendas.add(venda);
+			}
+		} catch (SQLException | BusinessException ex) {
+			
+			throw new DaoException("PROBLEMA AO CONSULTAR VENDAS - CONTATE O ADMINISTRADOR");
+			
+		}
+		return vendas;
 	}
 
 }

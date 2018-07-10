@@ -26,7 +26,11 @@ public class BusinessProduto implements IBusinessProduto {
 
 	@Override
 	public void editar(Produto produto) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			this.daoProduto.editar(produto);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 
@@ -42,7 +46,11 @@ public class BusinessProduto implements IBusinessProduto {
 
 	@Override
 	public List<Produto> buscarPorBusca(String busca) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			return this.daoProduto.buscarPorBusca(busca);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 

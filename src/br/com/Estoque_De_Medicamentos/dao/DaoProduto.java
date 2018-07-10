@@ -4,9 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import br.com.Estoque_De_Medicamentos.entidade.Administrador;
+import br.com.Estoque_De_Medicamentos.entidade.Funcionario;
 import br.com.Estoque_De_Medicamentos.entidade.Produto;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
@@ -44,7 +45,24 @@ public class DaoProduto implements IDaoProduto {
 	}
 	@Override
 	public void editar(Produto produto) throws DaoException{
-		// TODO Auto-generated method stub
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement(SQLEstoque.update_Produto_All);	
+			
+			statement.setString(1, produto.getFornecedor());
+			statement.setDate(2, produto.getData_entrega());
+			statement.setInt(3, produto.getQuantidade());
+			statement.setInt(4, produto.getItemProduto().getId());
+			
+			statement.setInt(5, produto.getId());
+						
+			statement.executeUpdate();
+			statement.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DaoException("Erro ao Atualizar Produto");
+		}
 		
 	}
 	@Override
@@ -76,7 +94,32 @@ public class DaoProduto implements IDaoProduto {
 	}
 	@Override
 	public List<Produto> buscarPorBusca(String busca) throws DaoException{
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Produto> produtos = new ArrayList<>();
+
+		try {
+			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			this.statement = conexao.prepareStatement("SELECT * FROM produto");
+	
+			ResultSet result = this.statement.executeQuery();
+			Produto produto;
+			while (result.next()) {
+				
+				produto=new Produto();
+				
+            	produto.setFornecedor(result.getString(1));
+            	produto.setData_entrega(result.getDate(2));
+            	produto.setQuantidade(result.getInt(3));
+            	produto.setItemProduto(Fachada.getInstance().itemProdutoBuscarPorId(result.getInt(4)));
+				
+				produtos.add(produto);
+			}
+		} catch (SQLException | BusinessException ex) {
+			
+			throw new DaoException("PROBLEMA AO CONSULTAR PRODUTO - CONTATE O ADMINISTRADOR");
+			
+		}
+		return produtos;
+
 	}
 }

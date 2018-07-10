@@ -26,7 +26,11 @@ public class BusinessItemVenda implements IBusinessItemVenda{
 
 	@Override
 	public void editar(ItemVenda itemVenda) throws BusinessException {
-		// TODO Auto-generated method stub
+		try {
+			this.daoItemVenda.editar(itemVenda);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 

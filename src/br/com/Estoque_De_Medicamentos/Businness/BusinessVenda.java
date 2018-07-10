@@ -28,7 +28,7 @@ public class BusinessVenda implements IBusinessVenda {
 	@Override
 	public void editar(Venda venda) throws BusinessException {
         try {
-			
+        	this.daoVenda.editar(venda);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -48,7 +48,7 @@ public class BusinessVenda implements IBusinessVenda {
 	@Override
 	public List<Venda> buscarPorBusca(String busca) throws BusinessException {
         try {
-			
+        	return this.daoVenda.buscarPorBusca(busca);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
