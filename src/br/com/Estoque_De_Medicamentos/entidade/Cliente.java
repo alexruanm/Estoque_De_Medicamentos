@@ -1,5 +1,7 @@
 package br.com.Estoque_De_Medicamentos.entidade;
 
+import java.util.List;
+
 public class Cliente {
 	
 	private Integer id;
@@ -7,6 +9,7 @@ public class Cliente {
 	private String cpf;
 	private String celular;
 	private Endereco endereco;
+	private List<Contato> contatos;
 	
 	
 	public Integer getId() {
@@ -40,6 +43,17 @@ public class Cliente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	public List<Contato> getContatos() {
+		return contatos;
+	}
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
+	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Nome: "+ getNome() +"\n Cpf: "+getCpf()+"\n";
+	}
 
 }

@@ -58,17 +58,17 @@ public class DaoItemProduto implements IDaoItemProduto {
 	public ItemProduto buscarPorId(int id)throws DaoException {
 		try {
     		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-			this.statement = conexao.prepareStatement(SQLEstoque.insert_ItemProduto_All);	
-            this.statement.setInt(1, id);
+			this.statement = conexao.prepareStatement("SELECT * FROM item_produto where id  = '" + id + "'");	
 
             ResultSet result = this.statement.executeQuery();
             ItemProduto itemProduto= new ItemProduto();
             if (result.next()) {
             	
-            	itemProduto.setNome(result.getString(1));
-            	itemProduto.setValidade(result.getDate(2));
-            	itemProduto.setData_fabricacao(result.getDate(3));
-            	itemProduto.setPreco(result.getDouble(4));
+            	itemProduto.setId(result.getInt(1));
+            	itemProduto.setNome(result.getString(2));
+            	itemProduto.setValidade(result.getDate(3));
+            	itemProduto.setData_fabricacao(result.getDate(4));
+            	itemProduto.setPreco(result.getDouble(5));
                 
                 
             	                

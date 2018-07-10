@@ -1,5 +1,18 @@
 package br.com.Estoque_De_Medicamentos.sql;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.Estoque_De_Medicamentos.entidade.Administrador;
+import br.com.Estoque_De_Medicamentos.entidade.Funcionario;
+import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
+import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
+import br.com.Estoque_De_Medicamentos.fachada.Fachada;
+
 public class SQLEstoque {
 	
 	public static String url="jdbc:postgresql://localhost:5432/EstoqueMedicamento";
@@ -76,13 +89,8 @@ public class SQLEstoque {
 	
 	
 	// SQL Administrador
-	public static final String insert_Administrador_All="insert into administrador (login," + 
-			"senha," + 
-			"nome," + 
-			"cpf," + 
-			"endereco_fun," + 
-			"celular) " + 
-			"values (?,?,?,?,?,?) ";
+	public static final String insert_Administrador_All="insert into administrador (login,senha,nome,cpf,endereco_fun,celular) " + 
+			" values (?,?,?,?,?,?) ";
 	public static final String update_Administrador_All="UPDATE administrador SET login=?,senha = ?, nome=?,cpf=?,endereco_fun=?,celular=? WHERE id = ?";
 	
 	
@@ -92,5 +100,70 @@ public class SQLEstoque {
 	public static final String insert_Contato_All="insert into contato (descricao,id_cliente) "
 			+ "values (?,?) ";
 	public static final String update_Contato_All="UPDATE contato SET descricao=?,id_cliente = ? WHERE id = ?";
+	
+	
+	
+	public static Object loginSenha(String login, String senha) throws DaoException {
+		
+		Connection conexao;
+		PreparedStatement statement;
+
+		try {
+			conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			statement = conexao.prepareStatement("SELECT * FROM administrador WHERE login ='"+ login + "'And senha='" +senha+"'" );
+
+			ResultSet result = statement.executeQuery();
+			Administrador administrador;
+		
+			if(result.next()) {
+				
+				administrador=new Administrador();
+	
+				administrador.setId(result.getInt(1));
+				administrador.setLogin(result.getString(2));
+            	administrador.setSenha(result.getString(3));
+                administrador.setNome(result.getString(4));
+                administrador.setCpf(result.getString(5));
+                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+                administrador.setCelular(result.getString(7));
+ 
+                return administrador;
+				
+			}
+		} catch (SQLException | BusinessException ex) {
+			
+			throw new DaoException("PROBLEMA AO CONSULTAR ADMINISTRADOR - CONTATE O PROFISSIONAL QUALIFICADO");
+			
+		}
+		
+		try {
+			conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
+			statement = conexao.prepareStatement("SELECT * FROM funcionario WHERE login ='"+ login + "'And senha='" +senha+"'" );
+
+			ResultSet result = statement.executeQuery();
+			Funcionario funcionario;
+			if(result.next()) {
+				
+				funcionario=new Funcionario();
+				
+				funcionario.setId(result.getInt(0));
+				funcionario.setLogin(result.getString(1));
+				funcionario.setSenha(result.getString(2));
+				funcionario.setNome(result.getString(3));
+				funcionario.setCpf(result.getString(4));
+				funcionario.setCelular(result.getString(5));
+				funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+                
+                return funcionario;
+				
+			}
+		} catch (SQLException | BusinessException ex) {
+			
+			throw new DaoException("PROBLEMA AO CONSULTAR ADMINISTRADOR - CONTATE O PROFISSIONAL QUALIFICADO");
+			
+		}
+		return null;
+
+	}
 	
 }

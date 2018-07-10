@@ -3,10 +3,14 @@ package br.com.Estoque_De_Medicamentos.App;
 import java.io.IOException;
 
 import br.com.Estoque_De_Medicamentos.dao.DaoEndereco;
+import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Endereco;
 import br.com.Estoque_De_Medicamentos.entidade.Tela;
+import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
+import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.fachada.Fachada;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
+import br.com.Estoque_De_Medicamentos.sql.SQLEstoque;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,8 +19,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class App extends Application {
-	
-
 
 	   static Stage stage;
 		
@@ -114,7 +116,7 @@ public class App extends Application {
 	}
 	
 	public static void main(String[] args) {
-	
+
 		launch(args);
 		
 		

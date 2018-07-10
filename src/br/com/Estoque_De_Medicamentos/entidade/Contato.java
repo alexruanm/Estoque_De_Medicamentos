@@ -1,9 +1,13 @@
 package br.com.Estoque_De_Medicamentos.entidade;
 
+import java.util.List;
+
 public class Contato {
 	private Integer id;
 	private String descricao;
 	private Cliente cliente;
+	private List<Contato> contatos;
+	
 	public Integer getId() {
 		return id;
 	}

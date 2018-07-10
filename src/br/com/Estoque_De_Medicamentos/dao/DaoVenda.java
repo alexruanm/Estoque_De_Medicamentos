@@ -66,17 +66,17 @@ public class DaoVenda implements IDaoVenda {
 	public Venda buscarPorId(int id)throws DaoException {
 		try {
     		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-			this.statement = conexao.prepareStatement(SQLEstoque.insert_Venda_All);	
-            this.statement.setInt(1, id);
+			this.statement = conexao.prepareStatement("SELECT * FROM venda where id  = '" + id + "'");	
 
             ResultSet result = this.statement.executeQuery();
             Venda venda= new Venda();
             if (result.next()) {
             	
-            	venda.setComprador(result.getString(1));
-            	venda.setVendedor(result.getString(2));
-            	venda.setDataComprar(result.getDate(3));
-            	venda.setItemVenda(Fachada.getInstance().itemVendaBuscarPorId(result.getInt(4)));
+            	venda.setId(result.getInt(1));
+            	venda.setComprador(result.getString(2));
+            	venda.setVendedor(result.getString(3));
+            	venda.setDataComprar(result.getDate(4));
+            	venda.setItemVenda(Fachada.getInstance().itemVendaBuscarPorId(result.getInt(5)));
             	                
             } else {
                 throw new DaoException("Venda NÃO EXISTE");
@@ -103,11 +103,11 @@ public class DaoVenda implements IDaoVenda {
 			while (result.next()) {
 				
 				venda=new Venda();
-				
-		     	venda.setComprador(result.getString(1));
-            	venda.setVendedor(result.getString(2));
-            	venda.setDataComprar(result.getDate(3));
-            	venda.setItemVenda(Fachada.getInstance().itemVendaBuscarPorId(result.getInt(4)));
+				venda.setId(result.getInt(1));
+		     	venda.setComprador(result.getString(2));
+            	venda.setVendedor(result.getString(3));
+            	venda.setDataComprar(result.getDate(4));
+            	venda.setItemVenda(Fachada.getInstance().itemVendaBuscarPorId(result.getInt(5)));
 				
 				vendas.add(venda);
 			}

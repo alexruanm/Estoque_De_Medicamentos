@@ -66,14 +66,15 @@ public class DaoContato implements IDaoContato{
 	public Contato buscarPorId(int id) throws DaoException {
 	      try {
 	    		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-				this.statement = conexao.prepareStatement(SQLEstoque.insert_Contato_All);	
-	            this.statement.setInt(1, id);
+				this.statement = conexao.prepareStatement("SELECT * FROM contao where id  = '" + id + "'");	
 
 	            ResultSet result = this.statement.executeQuery();
 	            Contato contato= new Contato();
-	            if (result.next()) {	            	
-	            	contato.setDescricao(result.getString(1));
-	            	contato.setCliente(Fachada.getInstance().clienteBuscarPorId(result.getInt(2)));
+	            if (result.next()) {	  
+	            	
+	            	contato.setId(result.getInt(1));
+	            	contato.setDescricao(result.getString(2));
+	            	contato.setCliente(Fachada.getInstance().clienteBuscarPorId(result.getInt(3)));
 	            } else {
 	                throw new DaoException("Contato não Exister");
 	            }

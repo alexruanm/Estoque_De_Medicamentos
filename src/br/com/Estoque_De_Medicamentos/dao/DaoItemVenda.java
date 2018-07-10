@@ -56,15 +56,15 @@ public class DaoItemVenda implements IDaoItemVenda{
 	public ItemVenda buscarPorId(int id)throws DaoException {
 		try {
     		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-			this.statement = conexao.prepareStatement(SQLEstoque.insert_ItemVenda_All);	
-            this.statement.setInt(1, id);
+			this.statement = conexao.prepareStatement("SELECT * FROM item_venda where id  = '" + id + "'");	
 
             ResultSet result = this.statement.executeQuery();
             ItemVenda itemVenda= new ItemVenda();
             if (result.next()) {
             	
-            	itemVenda.setProdutos_comprados(result.getString(1));
-            	itemVenda.setValor_da_compra(result.getDouble(2));
+            	itemVenda.setId(result.getInt(1));
+            	itemVenda.setProdutos_comprados(result.getString(2));
+            	itemVenda.setValor_da_compra(result.getDouble(3));
            
             	                
             } else {

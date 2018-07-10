@@ -52,6 +52,11 @@ public class Funcionario {
 	}
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}	
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Nome: "+ getNome() +"\n Cpf: "+getCpf()+"\n Login: "+getLogin()+"\n";
+	}
 
 }

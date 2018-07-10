@@ -15,9 +15,7 @@ import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.fachada.Fachada;
 import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
 import br.com.Estoque_De_Medicamentos.sql.SQLEstoque;
-import br.com.sysimovel.model.Cliente;
-import br.com.sysimovel.util.ConnectionFactory;
-import br.com.sysimovel.util.SqlUtil;
+
 
 
 public class DaoAdministrador implements IDaoAdministrador{
@@ -30,19 +28,24 @@ public class DaoAdministrador implements IDaoAdministrador{
 		Integer id_endereco;
 		
 		id_endereco = ConexaoSQL.getCurrentValorTabela("endereco");
+		System.out.println("entrou 1");
 		
 		try {
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
 			this.statement = conexao.prepareStatement(SQLEstoque.insert_Administrador_All);	
 			
+			System.out.println("entrou 2");
 			statement.setString(1, administrador.getLogin());
             statement.setString(2, administrador.getSenha());
             statement.setString(3, administrador.getNome());
             statement.setString(4, administrador.getCpf());
-            statement.setString(5, administrador.getCelular());
-            statement.setInt(6, id_endereco);
+            statement.setInt(5, id_endereco);
+            statement.setString(6, administrador.getCelular());
+            
+            System.out.println("entrou 3");
             
             statement.executeUpdate();
+            System.out.println("deu certo dentro da funçao");
             this.conexao.close();
 			
 		} catch (Exception e) {
@@ -77,19 +80,19 @@ public class DaoAdministrador implements IDaoAdministrador{
 	public Administrador buscarPorId(int id) throws DaoException {
 	      try {
 	    		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-				this.statement = conexao.prepareStatement(SQLEstoque.insert_Administrador_All);	
-	            this.statement.setInt(1, id);
+				this.statement = conexao.prepareStatement("SELECT * FROM administrador where id  = '" + id + "'");	
 
 	            ResultSet result = this.statement.executeQuery();
 	            Administrador administrador= new Administrador();
 	            if (result.next()) {
 	            	
-	            	administrador.setLogin(result.getString(1));
-	            	administrador.setSenha(result.getString(2));
-	                administrador.setNome(result.getString(3));
-	                administrador.setCpf(result.getString(4));
-	                administrador.setCelular(result.getString(5));
-	                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+	            	administrador.setId(result.getInt(1));
+	            	administrador.setLogin(result.getString(2));
+	            	administrador.setSenha(result.getString(3));
+	                administrador.setNome(result.getString(4));
+	                administrador.setCpf(result.getString(5));
+	                administrador.setCelular(result.getString(6));
+	                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(7)));
 	            	                
 	            } else {
 	                throw new DaoException("ADMINISTRADOR NÃO EXISTE");
@@ -114,15 +117,14 @@ public class DaoAdministrador implements IDaoAdministrador{
 			if (result.next()) {
 				administrador = new Administrador();
 				
-				administrador.setLogin(result.getString(1));
-            	administrador.setSenha(result.getString(2));
-                administrador.setNome(result.getString(3));
-                administrador.setCpf(result.getString(4));
-                administrador.setCelular(result.getString(5));
-                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
-//
-//				cl.setContatos(SqlUtil.getContatosPorClienteid(result.getInt(1)));
-//				cl.setEnd(SqlUtil.getEnderecoPorID(result.getInt(11), 1));
+				administrador.setId(result.getInt(1));
+				administrador.setLogin(result.getString(2));
+            	administrador.setSenha(result.getString(3));
+                administrador.setNome(result.getString(4));
+                administrador.setCpf(result.getString(5));
+                administrador.setCelular(result.getString(6));
+                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(7)));
+
 
 			} else {
 				return null;

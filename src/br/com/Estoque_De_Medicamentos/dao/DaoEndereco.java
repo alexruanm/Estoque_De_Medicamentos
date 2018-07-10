@@ -64,18 +64,18 @@ public class DaoEndereco implements IDaoEndereco{
 	public Endereco buscarPorId(int id) throws DaoException {
 	      try {
 	    		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-				this.statement = conexao.prepareStatement(SQLEstoque.insert_Contato_All);	
-	            this.statement.setInt(1, id);
+				this.statement = conexao.prepareStatement("SELECT * FROM endereco where id_endereco  = '" + id + "'");	
 
 	            ResultSet result = this.statement.executeQuery();
 	            Endereco endereco= new Endereco();
 	            
 	            if (result.next()) {	  
 	            	
-	            	endereco.setBairro(result.getString(1));
-	            	endereco.setCidade(result.getString(2));
-	            	endereco.setRua(result.getString(3));
-	            	endereco.setNumero(result.getInt(4));
+	            	endereco.setId(result.getInt(1));
+	            	endereco.setBairro(result.getString(2));
+	            	endereco.setCidade(result.getString(3));
+	            	endereco.setRua(result.getString(4));
+	            	endereco.setNumero(result.getInt(5));
 	
 	            } else {
 	                throw new DaoException("Endereço não Exister");

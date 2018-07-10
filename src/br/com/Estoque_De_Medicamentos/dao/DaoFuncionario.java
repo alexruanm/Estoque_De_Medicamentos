@@ -74,19 +74,19 @@ public class DaoFuncionario implements IDaoFuncionario{
 	public Funcionario buscarPorId(int id) throws DaoException{
 		try {
     		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-			this.statement = conexao.prepareStatement(SQLEstoque.insert_Funcionario_All);	
-            this.statement.setInt(1, id);
+			this.statement = conexao.prepareStatement("SELECT * FROM funcionario where id  = '" + id + "'");	
 
             ResultSet result = this.statement.executeQuery();
             Funcionario funcionario= new Funcionario();
             if (result.next()) {
             	
-            	funcionario.setLogin(result.getString(1));
-            	funcionario.setSenha(result.getString(2));
-            	funcionario.setNome(result.getString(3));
-            	funcionario.setCpf(result.getString(4));
-            	funcionario.setCelular(result.getString(5));
-            	funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+            	funcionario.setId(result.getInt(1));
+            	funcionario.setLogin(result.getString(2));
+            	funcionario.setSenha(result.getString(3));
+            	funcionario.setNome(result.getString(4));
+            	funcionario.setCpf(result.getString(5));
+            	funcionario.setCelular(result.getString(6));
+            	funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(7)));
             	                
             } else {
                 throw new DaoException("FUNCIONARIO NÃO EXISTE");
@@ -119,13 +119,13 @@ public class DaoFuncionario implements IDaoFuncionario{
 			while (result.next()) {
 				
 				funcionario=new Funcionario();
-				
-				funcionario.setLogin(result.getString(1));
-				funcionario.setSenha(result.getString(2));
-				funcionario.setNome(result.getString(3));
-				funcionario.setCpf(result.getString(4));
-				funcionario.setCelular(result.getString(5));
-				funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+				funcionario.setId(result.getInt(1));
+				funcionario.setLogin(result.getString(2));
+				funcionario.setSenha(result.getString(3));
+				funcionario.setNome(result.getString(4));
+				funcionario.setCpf(result.getString(5));
+				funcionario.setCelular(result.getString(6));
+				funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(7)));
 				
 				funcionarios.add(funcionario);
 			}

@@ -13,5 +13,15 @@ public interface IDaoAdministrador {
 	 public Administrador buscarPorId(int id)throws DaoException;
 	 public Administrador buscarPorCpf(String cpf)throws DaoException;
 	 public List<Administrador> buscarPorBusca(String busca) throws DaoException;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
 }

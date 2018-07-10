@@ -1,5 +1,7 @@
 package br.com.Estoque_De_Medicamentos.entidade;
 
+import java.util.List;
+
 public class Administrador {
 	
 	private Integer id;
@@ -9,6 +11,7 @@ public class Administrador {
 	private String cpf;
 	private String celular;
 	private Endereco endereco;
+
 	
 	public Integer getId() {
 		return id;
@@ -53,5 +56,9 @@ public class Administrador {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Nome: "+ getNome() +"\n Cpf: "+getCpf()+"\n Login: "+getLogin()+"\n";
+	}
 }

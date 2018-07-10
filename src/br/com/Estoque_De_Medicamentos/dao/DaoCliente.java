@@ -73,15 +73,15 @@ public class DaoCliente implements IDaoCliente{
 	public Cliente buscarPorId(int id)throws DaoException {
 	      try {
 	    		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-				this.statement = conexao.prepareStatement(SQLEstoque.insert_Cliente_All);	
-	            this.statement.setInt(1, id);
+				this.statement = conexao.prepareStatement("SELECT * FROM cliente where id  = '" + id + "'");	
 
 	            ResultSet result = this.statement.executeQuery();
 	            Cliente cliente= new Cliente();
 	            if (result.next()) {
 	            	
-	            	cliente.setNome(result.getString(1));
-	            	cliente.setCpf(result.getString(2));
+	            	cliente.setId(result.getInt(1));
+	            	cliente.setNome(result.getString(2));
+	            	cliente.setCpf(result.getString(3));
 	            	cliente.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(3)));
 	            	cliente.setCelular(result.getString(4));
 
@@ -120,11 +120,11 @@ public class DaoCliente implements IDaoCliente{
 			while (result.next()) {
 				
 				cliente=new Cliente();
-				
-			   	cliente.setNome(result.getString(1));
-            	cliente.setCpf(result.getString(2));
-            	cliente.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(3)));
-            	cliente.setCelular(result.getString(4));
+				cliente.setId(result.getInt(1));
+			   	cliente.setNome(result.getString(2));
+            	cliente.setCpf(result.getString(3));
+            	cliente.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(4)));
+            	cliente.setCelular(result.getString(5));
 				
 				clientes.add(cliente);
 			}
