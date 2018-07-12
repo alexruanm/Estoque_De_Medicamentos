@@ -7,7 +7,6 @@ public class Cliente {
 	private Integer id;
 	private String nome;
 	private String cpf;
-	private String celular;
 	private Endereco endereco;
 	private List<Contato> contatos;
 	
@@ -31,12 +30,6 @@ public class Cliente {
 		this.cpf = cpf;
 	}
 
-	public String getCelular() {
-		return celular;
-	}
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
 	public Endereco getEndereco() {
 		return endereco;
 	}

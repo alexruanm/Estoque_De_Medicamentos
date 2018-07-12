@@ -28,7 +28,8 @@ public class DaoContato implements IDaoContato{
 			this.statement = conexao.prepareStatement(SQLEstoque.insert_Contato_All);	
 			
             statement.setString(1, contato.getDescricao());
-            statement.setInt(2,id_cliente );
+            statement.setString(2, contato.getTipo());
+            statement.setInt(3,id_cliente );
        
             statement.executeUpdate();
             this.conexao.close();
@@ -48,7 +49,7 @@ public class DaoContato implements IDaoContato{
 			this.statement = conexao.prepareStatement(SQLEstoque.update_Contato_All);	
 			
 			 statement.setString(1, contato.getDescricao());
-	         statement.setInt(2,contato.getCliente().getId() );
+			 statement.setString(2, contato.getTipo());
 	         
 	         statement.setInt(3, contato.getId());
 						
@@ -74,7 +75,7 @@ public class DaoContato implements IDaoContato{
 	            	
 	            	contato.setId(result.getInt(1));
 	            	contato.setDescricao(result.getString(2));
-	            	contato.setCliente(Fachada.getInstance().clienteBuscarPorId(result.getInt(3)));
+	            	contato.setTipo(result.getString(3));
 	            } else {
 	                throw new DaoException("Contato não Exister");
 	            }
@@ -87,9 +88,6 @@ public class DaoContato implements IDaoContato{
 	        } catch (DaoException e) {
 				// TODO Auto-generated catch block
 				throw new DaoException("PROBLEMA AO CONSULTAR CONTATO - Contate o ADM");
-			} catch (BusinessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		return null;
 	}

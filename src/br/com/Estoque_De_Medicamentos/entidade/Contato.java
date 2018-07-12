@@ -3,10 +3,10 @@ package br.com.Estoque_De_Medicamentos.entidade;
 import java.util.List;
 
 public class Contato {
+	
 	private Integer id;
 	private String descricao;
-	private Cliente cliente;
-	private List<Contato> contatos;
+	private String tipo;
 	
 	public Integer getId() {
 		return id;
@@ -20,12 +20,11 @@ public class Contato {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	public String getTipo() {
+		return tipo;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
-
 
 }

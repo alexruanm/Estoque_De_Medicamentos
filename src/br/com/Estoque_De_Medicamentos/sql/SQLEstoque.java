@@ -68,10 +68,9 @@ public class SQLEstoque {
 	// SQL Cliente
 	public static final String insert_Cliente_All="insert into cliente (nome," + 
 			"  cpf," + 
-			"  endereco_cliente"
-			+ "celular) "
-			+ "values (?,?,?,?) ";
-	public static final String update_Cliente_All="UPDATE cliente SET nome=?,cpf = ?, endereco_cliente=?,celular=? WHERE id = ?";
+			"  endereco_cliente) "
+			+ "values (?,?,?) ";
+	public static final String update_Cliente_All="UPDATE cliente SET nome=?,cpf = ?, endereco_cliente=? WHERE id = ?";
 	
 	
 	
@@ -97,9 +96,9 @@ public class SQLEstoque {
 	
 	
 	// SQL Contato
-	public static final String insert_Contato_All="insert into contato (descricao,id_cliente) "
-			+ "values (?,?) ";
-	public static final String update_Contato_All="UPDATE contato SET descricao=?,id_cliente = ? WHERE id = ?";
+	public static final String insert_Contato_All="insert into contato (descricao,,tipo,id_cliente) "
+			+ "values (?,?,?) ";
+	public static final String update_Contato_All="UPDATE contato SET descricao=?,tipo=?,id_cliente = ? WHERE id = ?";
 	
 	
 	

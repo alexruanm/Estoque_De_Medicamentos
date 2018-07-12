@@ -2,6 +2,7 @@ package br.com.Estoque_De_Medicamentos.App;
 
 import java.io.IOException;
 
+import br.com.Estoque_De_Medicamentos.controllerView.ControleCadastroCliente;
 import br.com.Estoque_De_Medicamentos.dao.DaoEndereco;
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Endereco;
@@ -36,7 +37,7 @@ public class App extends Application {
 			try {
 		        menu= FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
 				cadastroFuncionario = FXMLLoader.load(getClass().getResource("../view/CadastroFuncionario.fxml"));
-				cadastroCliente = FXMLLoader.load(getClass().getResource("../view/CadastroCliente.fxml"));
+				cadastroCliente = FXMLLoader.load(getClass().getResource("../view/CadastroDeCliente.fxml"));
 				cadastroProduto = FXMLLoader.load(getClass().getResource("../view/CadastroProduto.fxml"));
 				venda = FXMLLoader.load(getClass().getResource("../view/Venda.fxml"));
 				consultaCliente= FXMLLoader.load(getClass().getResource("../view/ConsultaCliente.fxml"));
@@ -116,7 +117,7 @@ public class App extends Application {
 	}
 	
 	public static void main(String[] args) {
-
+ 
 		launch(args);
 		
 		

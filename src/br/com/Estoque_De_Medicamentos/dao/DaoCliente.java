@@ -34,7 +34,6 @@ public class DaoCliente implements IDaoCliente{
             statement.setString(1, cliente.getNome());
             statement.setString(2, cliente.getCpf());
             statement.setInt(3, id_endereco);
-            statement.setString(4, cliente.getCelular());
            
 
             statement.executeUpdate();
@@ -55,9 +54,8 @@ public class DaoCliente implements IDaoCliente{
 			statement.setString(1, cliente.getNome());
 			statement.setString(2, cliente.getCpf());
 			statement.setInt(3, cliente.getEndereco().getId());
-			statement.setString(4, cliente.getCelular());
 			
-			statement.setInt(5, cliente.getId());
+			statement.setInt(4, cliente.getId());
 						
 			statement.executeUpdate();
 			statement.close();
@@ -83,7 +81,6 @@ public class DaoCliente implements IDaoCliente{
 	            	cliente.setNome(result.getString(2));
 	            	cliente.setCpf(result.getString(3));
 	            	cliente.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(3)));
-	            	cliente.setCelular(result.getString(4));
 
 	            	                
 	            } else {
@@ -124,7 +121,6 @@ public class DaoCliente implements IDaoCliente{
 			   	cliente.setNome(result.getString(2));
             	cliente.setCpf(result.getString(3));
             	cliente.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(4)));
-            	cliente.setCelular(result.getString(5));
 				
 				clientes.add(cliente);
 			}
