@@ -7,7 +7,6 @@ public class Funcionario {
 	private String senha;
 	private String nome;
 	private String cpf;
-	private String celular;
 	private Endereco endereco;
 	
 	public Integer getId() {
@@ -41,12 +40,6 @@ public class Funcionario {
 		this.cpf = cpf;
 	}
 
-	public String getCelular() {
-		return celular;
-	}
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
 	public Endereco getEndereco() {
 		return endereco;
 	}

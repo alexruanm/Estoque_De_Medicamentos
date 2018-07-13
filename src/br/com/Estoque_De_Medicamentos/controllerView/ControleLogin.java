@@ -33,27 +33,30 @@ public class ControleLogin {
     	Object object = null;
     
     	if(event.getSource() == logarBnt) {
-    		if(loginField.getText().equals("")||senhaField.getText().equals("")) {
-    			
-    			Mensagens.mensagem("Campo Login ou Senha Vazio");
-
-	    	}else {
-	    		try {
-					object=SQLEstoque.loginSenha(loginField.getText(), senhaField.getText());
-				} catch (DaoException e) {
-					e.printStackTrace();
-				}
-	    	     if(object==null) {
-	    	    	 Mensagens.mensagem("Login ou Senha Invalidos");
-	    	     }else if(object.getClass()==Administrador.class) {
-	    	    	 Mensagens.mensagem("Administrador Logado com Sucesso");
-	    	    	 App.changeStage(Tela.menu);
-	    	     }else if(object.getClass()==Funcionario.class) {
-	    	    	 Mensagens.mensagem("Funcionário Logado com Sucesso");
-	    	    	 App.changeStage(Tela.menu);
-	    	     }
-	    	}
-    	}	
+    		App.changeStage(Tela.menu);
+    	}
+//    	if(event.getSource() == logarBnt) {
+//    		if(loginField.getText().equals("")||senhaField.getText().equals("")) {
+//    			
+//    			Mensagens.mensagem("Campo Login ou Senha Vazio");
+//
+//	    	}else {
+//	    		try {
+//					object=SQLEstoque.loginSenha(loginField.getText(), senhaField.getText());
+//				} catch (DaoException e) {
+//					e.printStackTrace();
+//				}
+//	    	     if(object==null) {
+//	    	    	 Mensagens.mensagem("Login ou Senha Invalidos");
+//	    	     }else if(object.getClass()==Administrador.class) {
+//	    	    	 Mensagens.mensagem("Administrador Logado com Sucesso");
+//	    	    	 App.changeStage(Tela.menu);
+//	    	     }else if(object.getClass()==Funcionario.class) {
+//	    	    	 Mensagens.mensagem("Funcionário Logado com Sucesso");
+//	    	    	 App.changeStage(Tela.menu);
+//	    	     }
+//	    	}
+//    	}	
     
     	if(event.getSource() == sairBnt)
 			System.exit(0);

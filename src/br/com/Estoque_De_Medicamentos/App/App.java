@@ -5,6 +5,7 @@ import java.io.IOException;
 import br.com.Estoque_De_Medicamentos.controllerView.ControleCadastroCliente;
 import br.com.Estoque_De_Medicamentos.dao.DaoEndereco;
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
+import br.com.Estoque_De_Medicamentos.entidade.Contato;
 import br.com.Estoque_De_Medicamentos.entidade.Endereco;
 import br.com.Estoque_De_Medicamentos.entidade.Tela;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
@@ -117,7 +118,14 @@ public class App extends Application {
 	}
 	
 	public static void main(String[] args) {
- 
+        try {
+			Fachada.getInstance().contatoSalvar(new Contato("alexruanm@hotmail.com","Email"));
+			System.out.println("foi realizado");
+			Fachada.getInstance().contatoSalvar(new Contato("(81) 99755 6188","Telefone 01"));
+			System.out.println("foi realizad 2o");
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
 		launch(args);
 		
 		

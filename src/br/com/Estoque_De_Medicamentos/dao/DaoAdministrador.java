@@ -28,24 +28,21 @@ public class DaoAdministrador implements IDaoAdministrador{
 		Integer id_endereco;
 		
 		id_endereco = ConexaoSQL.getCurrentValorTabela("endereco");
-		System.out.println("entrou 1");
 		
 		try {
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
 			this.statement = conexao.prepareStatement(SQLEstoque.insert_Administrador_All);	
 			
-			System.out.println("entrou 2");
+
 			statement.setString(1, administrador.getLogin());
             statement.setString(2, administrador.getSenha());
             statement.setString(3, administrador.getNome());
             statement.setString(4, administrador.getCpf());
             statement.setInt(5, id_endereco);
-            statement.setString(6, administrador.getCelular());
             
-            System.out.println("entrou 3");
+
             
             statement.executeUpdate();
-            System.out.println("deu certo dentro da funçao");
             this.conexao.close();
 			
 		} catch (Exception e) {
@@ -62,10 +59,9 @@ public class DaoAdministrador implements IDaoAdministrador{
             statement.setString(2, administrador.getSenha());
             statement.setString(3, administrador.getNome());
             statement.setString(4, administrador.getCpf());
-            statement.setString(5, administrador.getCelular());
-            statement.setInt(6, administrador.getEndereco().getId());
+            statement.setInt(5, administrador.getEndereco().getId());
             
-            statement.setInt(7, administrador.getId());
+            statement.setInt(6, administrador.getId());
 						
 			statement.executeUpdate();
 			statement.close();
@@ -91,8 +87,7 @@ public class DaoAdministrador implements IDaoAdministrador{
 	            	administrador.setSenha(result.getString(3));
 	                administrador.setNome(result.getString(4));
 	                administrador.setCpf(result.getString(5));
-	                administrador.setCelular(result.getString(6));
-	                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(7)));
+	                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
 	            	                
 	            } else {
 	                throw new DaoException("ADMINISTRADOR NÃO EXISTE");
@@ -122,8 +117,7 @@ public class DaoAdministrador implements IDaoAdministrador{
             	administrador.setSenha(result.getString(3));
                 administrador.setNome(result.getString(4));
                 administrador.setCpf(result.getString(5));
-                administrador.setCelular(result.getString(6));
-                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(7)));
+                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
 
 
 			} else {
@@ -159,8 +153,7 @@ public class DaoAdministrador implements IDaoAdministrador{
             	administrador.setSenha(result.getString(2));
                 administrador.setNome(result.getString(3));
                 administrador.setCpf(result.getString(4));
-                administrador.setCelular(result.getString(5));
-                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+                administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(5)));
 				
 				administradores.add(administrador);
 			}

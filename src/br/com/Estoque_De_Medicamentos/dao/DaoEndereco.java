@@ -23,10 +23,11 @@ public class DaoEndereco implements IDaoEndereco{
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
 			this.statement = conexao.prepareStatement(SQLEstoque.insert_Endereco_All);	
 			
-            statement.setString(1, endereco.getBairro());
+            statement.setString(1, endereco.getUf());
             statement.setString(2, endereco.getCidade());
             statement.setString(3, endereco.getRua());
             statement.setInt(4, endereco.getNumero());
+            statement.setString(5, endereco.getCep());
             statement.executeUpdate();
             this.conexao.close();
 			
@@ -43,12 +44,13 @@ public class DaoEndereco implements IDaoEndereco{
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
 			this.statement = conexao.prepareStatement(SQLEstoque.update_Endereco_All);	
 			
-		    statement.setString(1, endereco.getBairro());
+		    statement.setString(1, endereco.getUf());
             statement.setString(2, endereco.getCidade());
             statement.setString(3, endereco.getRua());
             statement.setInt(4, endereco.getNumero());
+            statement.setString(5, endereco.getCep());
             
-            statement.setInt(5, endereco.getId());
+            statement.setInt(6, endereco.getId());
 						
 			statement.executeUpdate();
 			statement.close();
@@ -72,10 +74,11 @@ public class DaoEndereco implements IDaoEndereco{
 	            if (result.next()) {	  
 	            	
 	            	endereco.setId(result.getInt(1));
-	            	endereco.setBairro(result.getString(2));
+	            	endereco.setUf(result.getString(2));
 	            	endereco.setCidade(result.getString(3));
 	            	endereco.setRua(result.getString(4));
 	            	endereco.setNumero(result.getInt(5));
+	            	endereco.setCep(result.getString(6));
 	
 	            } else {
 	                throw new DaoException("Endereço não Exister");

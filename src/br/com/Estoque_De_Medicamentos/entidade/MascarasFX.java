@@ -11,11 +11,9 @@ import javafx.scene.input.KeyEvent;
  */
 public class MascarasFX {
 	
-	static TextField textField;
+	TextField textField;
 
-    public static void mascaraNumeroInteiro(TextField textFieldEntrada){
-
-    	textField=textFieldEntrada;
+    public static void mascaraNumeroInteiro(TextField textField){
     	
         textField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (!newValue.matches("\\d*")) {

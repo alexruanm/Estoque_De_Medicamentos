@@ -8,6 +8,15 @@ public class Contato {
 	private String descricao;
 	private String tipo;
 	
+	
+	public Contato(String descricao, String tipo) {
+		super();
+		this.descricao = descricao;
+		this.tipo = tipo;
+	}
+	public Contato() {
+		
+	}
 	public Integer getId() {
 		return id;
 	}

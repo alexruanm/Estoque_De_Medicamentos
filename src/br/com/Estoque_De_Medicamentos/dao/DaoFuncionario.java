@@ -37,7 +37,7 @@ public class DaoFuncionario implements IDaoFuncionario{
             statement.setString(3, funcionario.getNome());
             statement.setString(4, funcionario.getCpf());
             statement.setInt(5, id_endereco);
-            statement.setString(6, funcionario.getCelular());
+
             statement.executeUpdate();
             this.conexao.close();
 			
@@ -57,9 +57,9 @@ public class DaoFuncionario implements IDaoFuncionario{
             statement.setString(3, funcionario.getNome());
             statement.setString(4, funcionario.getCpf());
             statement.setInt(5, funcionario.getEndereco().getId());
-            statement.setString(6, funcionario.getCelular());
+ 
             
-            statement.setInt(7, funcionario.getId());
+            statement.setInt(6, funcionario.getId());
 						
 			statement.executeUpdate();
 			statement.close();
@@ -85,8 +85,7 @@ public class DaoFuncionario implements IDaoFuncionario{
             	funcionario.setSenha(result.getString(3));
             	funcionario.setNome(result.getString(4));
             	funcionario.setCpf(result.getString(5));
-            	funcionario.setCelular(result.getString(6));
-            	funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(7)));
+            	funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
             	                
             } else {
                 throw new DaoException("FUNCIONARIO NÃO EXISTE");
@@ -124,8 +123,7 @@ public class DaoFuncionario implements IDaoFuncionario{
 				funcionario.setSenha(result.getString(3));
 				funcionario.setNome(result.getString(4));
 				funcionario.setCpf(result.getString(5));
-				funcionario.setCelular(result.getString(6));
-				funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(7)));
+				funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
 				
 				funcionarios.add(funcionario);
 			}

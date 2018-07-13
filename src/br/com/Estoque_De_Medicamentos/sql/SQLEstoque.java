@@ -23,9 +23,9 @@ public class SQLEstoque {
 	
 	
 	// SQL Endereco
-	public static final String insert_Endereco_All="insert into endereco (bairro, cidade, rua, numero) "
-			+ "values (?,?,?,?) ";
-	public static final String update_Endereco_All="UPDATE endereco SET bairro= ?, cidade= ?, rua= ?, numero= ? WHERE id = ?";
+	public static final String insert_Endereco_All="insert into endereco (uf, cidade, rua, numero,cep) "
+			+ "values (?,?,?,?,?) ";
+	public static final String update_Endereco_All="UPDATE endereco SET uf= ?, cidade= ?, rua= ?, numero= ?,cep=?  WHERE id = ?";
 	
 	
 	
@@ -68,9 +68,9 @@ public class SQLEstoque {
 	// SQL Cliente
 	public static final String insert_Cliente_All="insert into cliente (nome," + 
 			"  cpf," + 
-			"  endereco_cliente) "
+			"  id_endereco) "
 			+ "values (?,?,?) ";
-	public static final String update_Cliente_All="UPDATE cliente SET nome=?,cpf = ?, endereco_cliente=? WHERE id = ?";
+	public static final String update_Cliente_All="UPDATE cliente SET nome=?,cpf = ?, id_endereco=? WHERE id = ?";
 	
 	
 	
@@ -79,24 +79,23 @@ public class SQLEstoque {
 			"  senha," + 
 			"  nome," + 
 			"  cpf," + 
-			"  endereco_fun "
-			+ "celular) "
-			+ "values (?,?,?,?,?,?) ";
-	public static final String update_Funcionario_All="UPDATE funcionario SET login=?,senha = ?, nome=?,cpf=?,endereco_fun=?,celular=? WHERE id = ?";
+			"  id_endereco) "
+			+ "values (?,?,?,?,?) ";
+	public static final String update_Funcionario_All="UPDATE funcionario SET login=?,senha = ?, nome=?,cpf=?,id_endereco=? WHERE id = ?";
 	
 	
 	
 	
 	// SQL Administrador
-	public static final String insert_Administrador_All="insert into administrador (login,senha,nome,cpf,endereco_fun,celular) " + 
+	public static final String insert_Administrador_All="insert into administrador (login,senha,nome,cpf,id_endereco) " + 
 			" values (?,?,?,?,?,?) ";
-	public static final String update_Administrador_All="UPDATE administrador SET login=?,senha = ?, nome=?,cpf=?,endereco_fun=?,celular=? WHERE id = ?";
+	public static final String update_Administrador_All="UPDATE administrador SET login=?,senha = ?, nome=?,cpf=?,id_endereco=? WHERE id = ?";
 	
 	
 	
 	
 	// SQL Contato
-	public static final String insert_Contato_All="insert into contato (descricao,,tipo,id_cliente) "
+	public static final String insert_Contato_All="insert into contato (descricao,tipo,id_cliente) "
 			+ "values (?,?,?) ";
 	public static final String update_Contato_All="UPDATE contato SET descricao=?,tipo=?,id_cliente = ? WHERE id = ?";
 	
@@ -124,7 +123,6 @@ public class SQLEstoque {
                 administrador.setNome(result.getString(4));
                 administrador.setCpf(result.getString(5));
                 administrador.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
-                administrador.setCelular(result.getString(7));
  
                 return administrador;
 				
@@ -145,12 +143,11 @@ public class SQLEstoque {
 				
 				funcionario=new Funcionario();
 				
-				funcionario.setId(result.getInt(0));
-				funcionario.setLogin(result.getString(1));
-				funcionario.setSenha(result.getString(2));
-				funcionario.setNome(result.getString(3));
-				funcionario.setCpf(result.getString(4));
-				funcionario.setCelular(result.getString(5));
+				funcionario.setId(result.getInt(1));
+				funcionario.setLogin(result.getString(2));
+				funcionario.setSenha(result.getString(3));
+				funcionario.setNome(result.getString(4));
+				funcionario.setCpf(result.getString(5));
 				funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
                 
                 return funcionario;
