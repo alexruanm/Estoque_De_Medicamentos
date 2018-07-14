@@ -36,7 +36,10 @@ public class DaoFuncionario implements IDaoFuncionario{
             statement.setString(2, funcionario.getSenha());
             statement.setString(3, funcionario.getNome());
             statement.setString(4, funcionario.getCpf());
-            statement.setInt(5, id_endereco);
+            statement.setString(5, funcionario.getFuncao());
+            statement.setString(6, funcionario.getTelefone());
+            
+            statement.setInt(7, id_endereco);
 
             statement.executeUpdate();
             this.conexao.close();
@@ -56,10 +59,12 @@ public class DaoFuncionario implements IDaoFuncionario{
             statement.setString(2, funcionario.getSenha());
             statement.setString(3, funcionario.getNome());
             statement.setString(4, funcionario.getCpf());
-            statement.setInt(5, funcionario.getEndereco().getId());
+            statement.setString(5, funcionario.getFuncao());
+            statement.setString(6, funcionario.getTelefone());
+            statement.setInt(7, funcionario.getEndereco().getId());
  
             
-            statement.setInt(6, funcionario.getId());
+            statement.setInt(8, funcionario.getId());
 						
 			statement.executeUpdate();
 			statement.close();
@@ -85,7 +90,9 @@ public class DaoFuncionario implements IDaoFuncionario{
             	funcionario.setSenha(result.getString(3));
             	funcionario.setNome(result.getString(4));
             	funcionario.setCpf(result.getString(5));
-            	funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+            	funcionario.setFuncao(result.getString(6));
+            	funcionario.setTelefone(result.getString(7));
+            	funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(8)));
             	                
             } else {
                 throw new DaoException("FUNCIONARIO NÃO EXISTE");
@@ -123,7 +130,9 @@ public class DaoFuncionario implements IDaoFuncionario{
 				funcionario.setSenha(result.getString(3));
 				funcionario.setNome(result.getString(4));
 				funcionario.setCpf(result.getString(5));
-				funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(6)));
+				funcionario.setFuncao(result.getString(6));
+				funcionario.setTelefone(result.getString(7));
+				funcionario.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(8)));
 				
 				funcionarios.add(funcionario);
 			}

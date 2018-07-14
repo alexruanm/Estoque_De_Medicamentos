@@ -7,6 +7,8 @@ public class Funcionario {
 	private String senha;
 	private String nome;
 	private String cpf;
+	private String funcao;
+	private String telefone;
 	private Endereco endereco;
 	
 	public Integer getId() {
@@ -46,10 +48,37 @@ public class Funcionario {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
+	/**
+	 * @return the funcao
+	 */
+	public String getFuncao() {
+		return funcao;
+	}
+	/**
+	 * @param funcao the funcao to set
+	 */
+	public void setFuncao(String funcao) {
+		this.funcao = funcao;
+	}
+	
+	/**
+	 * @return the telefone
+	 */
+	public String getTelefone() {
+		return telefone;
+	}
+	/**
+	 * @param telefone the telefone to set
+	 */
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "Nome: "+ getNome() +"\n Cpf: "+getCpf()+"\n Login: "+getLogin()+"\n";
 	}
+	
 
 }

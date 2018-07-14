@@ -75,13 +75,13 @@ public class SQLEstoque {
 	
 	
 	// SQL Funcionario
-	public static final String insert_Funcionario_All="insert into endereco (login," + 
+	public static final String insert_Funcionario_All="insert into funcionario (login," + 
 			"  senha," + 
 			"  nome," + 
-			"  cpf," + 
+			"  cpf,funcao,telefone," + 
 			"  id_endereco) "
-			+ "values (?,?,?,?,?) ";
-	public static final String update_Funcionario_All="UPDATE funcionario SET login=?,senha = ?, nome=?,cpf=?,id_endereco=? WHERE id = ?";
+			+ "values (?,?,?,?,?,?,?) ";
+	public static final String update_Funcionario_All="UPDATE funcionario SET login=?,senha = ?, nome=?,cpf=?,funcao=?,telefone=?,id_endereco=? WHERE id = ?";
 	
 	
 	

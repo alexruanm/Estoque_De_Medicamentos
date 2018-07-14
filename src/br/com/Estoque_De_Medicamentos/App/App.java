@@ -1,24 +1,11 @@
 package br.com.Estoque_De_Medicamentos.App;
-
-import java.io.IOException;
-
-import br.com.Estoque_De_Medicamentos.controllerView.ControleCadastroCliente;
-import br.com.Estoque_De_Medicamentos.dao.DaoEndereco;
-import br.com.Estoque_De_Medicamentos.entidade.Administrador;
-import br.com.Estoque_De_Medicamentos.entidade.Contato;
-import br.com.Estoque_De_Medicamentos.entidade.Endereco;
 import br.com.Estoque_De_Medicamentos.entidade.Tela;
-import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
-import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
-import br.com.Estoque_De_Medicamentos.fachada.Fachada;
-import br.com.Estoque_De_Medicamentos.sql.ConexaoSQL;
-import br.com.Estoque_De_Medicamentos.sql.SQLEstoque;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
 
 public class App extends Application {
 
@@ -36,6 +23,7 @@ public class App extends Application {
 	        this.stage = stage;
 			
 			try {
+
 		        menu= FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
 				cadastroFuncionario = FXMLLoader.load(getClass().getResource("../view/CadastroFuncionario.fxml"));
 				cadastroCliente = FXMLLoader.load(getClass().getResource("../view/CadastroDeCliente.fxml"));
@@ -52,14 +40,6 @@ public class App extends Application {
 				
 			    sceneLogin=new Scene(login, 540, 380);
 				sceneMenu = new Scene(menu);
-				
-				
-//				this.stage.setScene(sceneMenu);
-//				if(Tela.login) {
-//					
-//				}
-				
-//				stage.centerOnScreen();
 				changeStage(Tela.login);
 				this.stage.show();
 			
@@ -118,14 +98,7 @@ public class App extends Application {
 	}
 	
 	public static void main(String[] args) {
-        try {
-			Fachada.getInstance().contatoSalvar(new Contato("alexruanm@hotmail.com","Email"));
-			System.out.println("foi realizado");
-			Fachada.getInstance().contatoSalvar(new Contato("(81) 99755 6188","Telefone 01"));
-			System.out.println("foi realizad 2o");
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
+
 		launch(args);
 		
 		

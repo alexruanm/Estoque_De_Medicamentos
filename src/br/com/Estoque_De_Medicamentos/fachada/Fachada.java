@@ -6,6 +6,7 @@ import br.com.Estoque_De_Medicamentos.Businness.BusinessAdministrador;
 import br.com.Estoque_De_Medicamentos.Businness.BusinessCliente;
 import br.com.Estoque_De_Medicamentos.Businness.BusinessContato;
 import br.com.Estoque_De_Medicamentos.Businness.BusinessEndereco;
+import br.com.Estoque_De_Medicamentos.Businness.BusinessFuncionario;
 import br.com.Estoque_De_Medicamentos.Businness.BusinessItemProduto;
 import br.com.Estoque_De_Medicamentos.Businness.BusinessItemVenda;
 import br.com.Estoque_De_Medicamentos.Businness.BusinessProduto;
@@ -14,6 +15,7 @@ import br.com.Estoque_De_Medicamentos.Businness.IBusinessAdministrador;
 import br.com.Estoque_De_Medicamentos.Businness.IBusinessCliente;
 import br.com.Estoque_De_Medicamentos.Businness.IBusinessContato;
 import br.com.Estoque_De_Medicamentos.Businness.IBusinessEndereco;
+import br.com.Estoque_De_Medicamentos.Businness.IBusinessFuncionario;
 import br.com.Estoque_De_Medicamentos.Businness.IBusinessItemProduto;
 import br.com.Estoque_De_Medicamentos.Businness.IBusinessItemVenda;
 import br.com.Estoque_De_Medicamentos.Businness.IBusinessProduto;
@@ -22,6 +24,7 @@ import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Cliente;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
 import br.com.Estoque_De_Medicamentos.entidade.Endereco;
+import br.com.Estoque_De_Medicamentos.entidade.Funcionario;
 import br.com.Estoque_De_Medicamentos.entidade.ItemProduto;
 import br.com.Estoque_De_Medicamentos.entidade.ItemVenda;
 import br.com.Estoque_De_Medicamentos.entidade.Produto;
@@ -40,6 +43,7 @@ public class Fachada implements IFachada{
 	   private IBusinessItemVenda businessItemVenda;
 	   private IBusinessProduto businessProduto; 
 	   private IBusinessVenda businessVenda;
+	   private IBusinessFuncionario businessFuncionario;
 
 	   private static Fachada fachada;
 
@@ -54,6 +58,7 @@ public class Fachada implements IFachada{
 		   
 	      businessAdministrador= new BusinessAdministrador();
 	  	  businessCliente= new BusinessCliente();
+	  	  businessFuncionario= new BusinessFuncionario();
 	  	  businessContato= new BusinessContato();
 		  businessEndereco = new BusinessEndereco();
 		  businessItemProduto= new BusinessItemProduto();
@@ -229,6 +234,36 @@ public class Fachada implements IFachada{
 	public List<Venda> vendaBuscarPorBusca(String busca) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void funcionarioSalvar(Funcionario funcionario) throws BusinessException {
+		businessFuncionario.salvar(funcionario);
+		
+	}
+
+	@Override
+	public void funcionarioEditar(Funcionario funcionario) throws BusinessException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Funcionario funcionarioBuscarPorId(int id) throws BusinessException {
+		// TODO Auto-generated method stub
+		return businessFuncionario.buscarPorId(id);
+	}
+
+	@Override
+	public Funcionario funcionarioBuscarPorCpf(String cpf) throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Funcionario> funcionarioBuscarPorBusca(String busca) throws BusinessException {
+		// TODO Auto-generated method stub
+		return businessFuncionario.buscarPorBusca(busca);
 	}
 
 }

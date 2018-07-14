@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Endereco;
+import br.com.Estoque_De_Medicamentos.entidade.Funcionario;
 import br.com.Estoque_De_Medicamentos.entidade.ItemProduto;
 import br.com.Estoque_De_Medicamentos.entidade.ItemVenda;
 import br.com.Estoque_De_Medicamentos.entidade.Produto;
@@ -57,6 +58,12 @@ public interface IFachada  {
 	 public void vendaEditar(Venda venda)throws BusinessException;
 	 public Venda vendaBuscarPorId(int id)throws BusinessException;
 	 public List<Venda> vendaBuscarPorBusca(String busca)throws BusinessException;
+	 
+	 public void funcionarioSalvar(Funcionario funcionario)throws BusinessException;
+	 public void funcionarioEditar(Funcionario funcionario)throws BusinessException;
+	 public Funcionario funcionarioBuscarPorId(int id)throws BusinessException;
+	 public Funcionario funcionarioBuscarPorCpf(String cpf)throws BusinessException;
+	 public List<Funcionario> funcionarioBuscarPorBusca(String busca)throws BusinessException;
 
 
 }
