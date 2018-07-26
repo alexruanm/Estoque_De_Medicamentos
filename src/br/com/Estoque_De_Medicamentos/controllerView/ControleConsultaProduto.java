@@ -6,12 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 
 public class ControleConsultaProduto {
-
-    @FXML
-    private GridPane pane;
 
     @FXML
     private TextField pesquisaTextField;
@@ -23,16 +19,22 @@ public class ControleConsultaProduto {
     private TableView<?> tabela;
 
     @FXML
-    private TableColumn<?, ?> comTID;
+    private TableColumn<?, ?> idColumn;
 
     @FXML
-    private TableColumn<?, ?> comTProduto;
+    private TableColumn<?, ?> produtoColumn;
 
     @FXML
-    private TableColumn<?, ?> comTQuant;
+    private TableColumn<?, ?> quantColmn;
 
     @FXML
-    private TableColumn<?, ?> comTPreco;
+    private TableColumn<?, ?> precoColumn;
+
+    @FXML
+    private Button cadastrarProduto;
+
+    @FXML
+    private Button editarProduto;
 
     @FXML
     void actionEvento(ActionEvent event) {

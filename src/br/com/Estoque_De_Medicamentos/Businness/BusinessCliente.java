@@ -57,7 +57,7 @@ public class BusinessCliente implements IBusinessCliente {
 	@Override
 	public List<Cliente> buscarPorBusca(String busca)throws BusinessException {
 		try {
-			this.cliente.buscarPorBusca(busca);
+			return this.cliente.buscarPorBusca(busca);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

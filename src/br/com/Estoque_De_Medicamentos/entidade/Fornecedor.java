@@ -2,13 +2,12 @@ package br.com.Estoque_De_Medicamentos.entidade;
 
 import java.util.List;
 
-public class Produto {
+public class Fornecedor {
 	
 	private Integer id;
 	private String nome;
-	private String tipo;
-	private List<ItemProduto> itemProduto;
-	
+	private String cnpj;
+
 	/**
 	 * @return the id
 	 */
@@ -33,31 +32,27 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	/**
-	 * @return the itemProduto
+	 * @return the cnpj
 	 */
-	public List<ItemProduto> getItemProduto() {
-		return itemProduto;
+	public String getCnpj() {
+		return cnpj;
 	}
+	/**
+	 * @param cnpj the cnpj to set
+	 */
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	/**
+	 * @return the produtos
+	 */
 
-	public void setItemProduto(List<ItemProduto> itemProduto) {
-		this.itemProduto = itemProduto;
-	}
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Nome:"+ getNome()+"\nTipo: "+getTipo();
+		return "Fornecedor Nome: "+getNome()+"\nCNPJ: "+getCnpj();
 	}
-	
 	
 
 }

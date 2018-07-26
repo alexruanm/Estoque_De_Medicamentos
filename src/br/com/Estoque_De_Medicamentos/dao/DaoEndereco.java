@@ -66,7 +66,7 @@ public class DaoEndereco implements IDaoEndereco{
 	public Endereco buscarPorId(int id) throws DaoException {
 	      try {
 	    		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-				this.statement = conexao.prepareStatement("SELECT * FROM endereco where id_endereco  = '" + id + "'");	
+				this.statement = conexao.prepareStatement("SELECT * FROM endereco where id  = '" + id + "'");	
 
 	            ResultSet result = this.statement.executeQuery();
 	            Endereco endereco= new Endereco();
@@ -81,7 +81,7 @@ public class DaoEndereco implements IDaoEndereco{
 	            	endereco.setCep(result.getString(6));
 	
 	            } else {
-	                throw new DaoException("Endereço não Exister");
+	                System.out.println("Endereço não Exister");
 	            }
 	            this.conexao.close();
 	            return endereco;
@@ -89,10 +89,7 @@ public class DaoEndereco implements IDaoEndereco{
 	        } catch (SQLException ex) {
 	            ex.printStackTrace();
 	            
-	        } catch (DaoException e) {
-				// TODO Auto-generated catch block
-				throw new DaoException("PROBLEMA AO CONSULTAR ENDEREÇO - Contate o ADM");
-			}
+	        }
 		return null;
 	}
 

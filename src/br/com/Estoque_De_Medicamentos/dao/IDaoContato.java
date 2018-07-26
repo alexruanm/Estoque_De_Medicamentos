@@ -10,6 +10,6 @@ public interface IDaoContato {
 
 	 public void salvar(Contato contato)throws DaoException;
 	 public void editar(Contato contato)throws DaoException;
-	 public Contato buscarPorId(int id) throws DaoException;
+	 public List<Contato> buscarPorIdCliente(int id) throws DaoException;
 	
 }

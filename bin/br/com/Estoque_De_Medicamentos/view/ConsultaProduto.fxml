@@ -1,78 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="pane" alignment="TOP_CENTER" hgap="10.0" prefHeight="470.0" prefWidth="720.0" style="-fx-background-color: #AFEEEE;" vgap="10.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.Estoque_De_Medicamentos.controllerView.ControleConsultaProduto">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="33.66666793823242" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="116.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="171.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="110.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="0.0" prefWidth="160.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="43.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="575.0" minWidth="10.0" prefWidth="32.33331298828125" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="11.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="0.0" prefHeight="28.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="1.0" prefHeight="10.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="246.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="4.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="4.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-   </rowConstraints>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.Estoque_De_Medicamentos.controllerView.ControleConsultaProduto">
    <children>
-      <Label prefHeight="39.0" prefWidth="311.0" text="Consultar Produto" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Label layoutX="31.0" layoutY="23.0" prefHeight="39.0" prefWidth="311.0" text="Consultar Produto">
          <font>
             <Font name="Bell MT" size="33.0" />
          </font>
       </Label>
-      <TextField fx:id="pesquisaTextField" onAction="#actionEvento" prefHeight="33.0" prefWidth="521.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
-         <cursor>
-            <Cursor fx:constant="NONE" />
-         </cursor>
+      <TextField fx:id="pesquisaTextField" layoutX="31.0" layoutY="79.0" onAction="#actionEvento" prefHeight="33.0" prefWidth="472.0">
          <font>
             <Font name="Bell MT Bold" size="17.0" />
          </font>
       </TextField>
-      <Button fx:id="pesquisaTextFieldB" mnemonicParsing="false" text="Pesquisa Produto" GridPane.columnIndex="4" GridPane.rowIndex="4">
+      <Button fx:id="pesquisaTextFieldB" layoutX="514.0" layoutY="79.0" mnemonicParsing="false" onAction="#actionEvento" text="Pesquisa Produto">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>
       </Button>
-      <ScrollPane prefHeight="313.0" prefWidth="648.0" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="6" GridPane.rowSpan="5">
-         <content>
-            <TableView fx:id="tabela" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onSort="#actionEvento">
-               <columns>
-                  <TableColumn fx:id="comTID" prefWidth="57.0" text="ID" />
-                  <TableColumn fx:id="comTProduto" prefWidth="309.0" text="Produto" />
-                  <TableColumn fx:id="comTQuant" prefWidth="135.0" text="Quant Disponivel" />
-                  <TableColumn fx:id="comTPreco" maxWidth="1.7976931348623157E308" prefWidth="115.0" text="Preço" />
-               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </content>
-      </ScrollPane>
+      <TableView fx:id="tabela" editable="true" layoutX="31.0" layoutY="123.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onSort="#actionEvento" prefHeight="226.0" prefWidth="636.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="67.0" resizable="false" text="ID" />
+            <TableColumn fx:id="produtoColumn" minWidth="0.0" prefWidth="341.0" resizable="false" text="Produto" />
+            <TableColumn fx:id="quantColmn" minWidth="1.0" prefWidth="120.0" resizable="false" text="Quant Disponivel" />
+            <TableColumn fx:id="precoColumn" maxWidth="287.0" prefWidth="106.0" resizable="false" sortable="false" text="Preço" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="cadastrarProduto" layoutX="31.0" layoutY="366.0" mnemonicParsing="false" onAction="#actionEvento" text="Cadastrar Produto">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="editarProduto" layoutX="206.0" layoutY="366.0" mnemonicParsing="false" onAction="#actionEvento" text="Editar Produto">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Button>
    </children>
-</GridPane>
+</AnchorPane>

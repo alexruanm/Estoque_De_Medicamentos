@@ -16,12 +16,13 @@ public class BusinessProduto implements IBusinessProduto {
 	}
 
 	@Override
-	public void salvar(Produto produto) throws BusinessException {
+	public Produto salvar(Produto produto) throws BusinessException {
 		try {
-			this.daoProduto.salvar(produto);
+			return this.daoProduto.salvar(produto);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}	
+		return null;
 	}
 
 	@Override

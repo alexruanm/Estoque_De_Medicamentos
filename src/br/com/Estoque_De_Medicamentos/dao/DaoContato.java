@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.Estoque_De_Medicamentos.entidade.Administrador;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
@@ -64,32 +66,31 @@ public class DaoContato implements IDaoContato{
 	}
 
 	@Override
-	public Contato buscarPorId(int id) throws DaoException {
+	public List<Contato> buscarPorIdCliente (int id) throws DaoException {
 	      try {
 	    		this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
-				this.statement = conexao.prepareStatement("SELECT * FROM contao where id  = '" + id + "'");	
+				this.statement = conexao.prepareStatement("SELECT * FROM contato where id_cliente = '" + id + "'");	
 
 	            ResultSet result = this.statement.executeQuery();
-	            Contato contato= new Contato();
-	            if (result.next()) {	  
-	            	
+	            List<Contato> contatos= new ArrayList<Contato>();
+	            Contato contato;
+	            while (result.next()) {	  
+	            	contato= new Contato();
 	            	contato.setId(result.getInt(1));
 	            	contato.setDescricao(result.getString(2));
 	            	contato.setTipo(result.getString(3));
-	            } else {
-	                throw new DaoException("Contato não Exister");
-	            }
+	            	contatos.add(contato);
+	            } 
 	            this.conexao.close();
-	            return contato;
+	            return contatos;
 
 	        } catch (SQLException ex) {
-	            ex.printStackTrace();
+	        	throw new DaoException("PROBLEMA AO CONSULTAR CONTATO - Contate o ADM");
+	         
 	            
-	        } catch (DaoException e) {
-				// TODO Auto-generated catch block
-				throw new DaoException("PROBLEMA AO CONSULTAR CONTATO - Contate o ADM");
-			}
-		return null;
+	        } 
+			
+		
 	}
 
 

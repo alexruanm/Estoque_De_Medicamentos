@@ -104,7 +104,7 @@ public class DaoCliente implements IDaoCliente{
 	@Override
 	public List<Cliente> buscarPorBusca(String busca)throws DaoException {
 		
-		List<Cliente> clientes = new ArrayList<>();
+		List<Cliente> clientes = new ArrayList<Cliente>();
 
 		try {
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
@@ -121,15 +121,19 @@ public class DaoCliente implements IDaoCliente{
 			   	cliente.setNome(result.getString(2));
             	cliente.setCpf(result.getString(3));
             	cliente.setEndereco(Fachada.getInstance().enderecoBuscarPorId(result.getInt(4)));
-				
+            	cliente.setContatos(Fachada.getInstance().contatobuscarPorIdCliente(cliente.getId()));
+            	System.out.println(cliente.getEndereco().getCidade());
 				clientes.add(cliente);
+				
 			}
+			System.out.println(clientes);
+			return clientes;
 		} catch (SQLException | BusinessException ex) {
 			
 			throw new DaoException("PROBLEMA AO CONSULTAR Clientes - CONTATE O ADMINISTRADOR");
 			
 		}
-		return clientes;
+		
 	}
 
 }

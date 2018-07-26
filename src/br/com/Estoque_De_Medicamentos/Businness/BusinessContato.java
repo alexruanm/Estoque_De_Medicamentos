@@ -1,5 +1,7 @@
 package br.com.Estoque_De_Medicamentos.Businness;
 
+import java.util.List;
+
 import br.com.Estoque_De_Medicamentos.dao.DaoContato;
 import br.com.Estoque_De_Medicamentos.dao.IDaoContato;
 import br.com.Estoque_De_Medicamentos.entidade.Contato;
@@ -35,9 +37,9 @@ public class BusinessContato implements  IBusinessContato {
 	}
 
 	@Override
-	public Contato buscarPorId(int id) throws BusinessException {
+	public List<Contato> buscarPorIdCliente(int id) throws BusinessException {
 		try {
-			return this.contato.buscarPorId(id);
+			return this.contato.buscarPorIdCliente(id);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

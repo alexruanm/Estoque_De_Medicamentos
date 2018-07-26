@@ -23,7 +23,7 @@ public class DaoItemVenda implements IDaoItemVenda{
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
 			this.statement = conexao.prepareStatement(SQLEstoque.insert_ItemVenda_All);	
 			
-			statement.setString(1, itemVenda.getProdutos_comprados());
+//			statement.setString(1, itemVenda.getProdutos_comprados());
 			statement.setDouble(2, itemVenda.getValor_da_compra());
 
             statement.executeUpdate();
@@ -40,7 +40,7 @@ public class DaoItemVenda implements IDaoItemVenda{
 			this.conexao = ConexaoSQL.getConnectionInstance(ConexaoSQL.NOME_BD_CONNECTION_POSTGRESS);
 			this.statement = conexao.prepareStatement(SQLEstoque.update_ItemVenda_All);	
 			
-			statement.setString(1, itemVenda.getProdutos_comprados());
+//			statement.setString(1, itemVenda.getProdutos_comprados());
 			statement.setDouble(2, itemVenda.getValor_da_compra());
 						
 			statement.executeUpdate();
@@ -63,7 +63,7 @@ public class DaoItemVenda implements IDaoItemVenda{
             if (result.next()) {
             	
             	itemVenda.setId(result.getInt(1));
-            	itemVenda.setProdutos_comprados(result.getString(2));
+//            	itemVenda.setProdutos_comprados(result.getString(2));
             	itemVenda.setValor_da_compra(result.getDouble(3));
            
             	                

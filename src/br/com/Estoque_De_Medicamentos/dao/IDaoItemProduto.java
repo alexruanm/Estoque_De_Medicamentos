@@ -8,7 +8,7 @@ import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 
 public interface IDaoItemProduto {
 	
-	 public void salvar(ItemProduto itemProduto)throws DaoException;
+	 public void salvar(ItemProduto itemProduto, int id_fornecedor, int id_produto)throws DaoException;
 	 public void editar(ItemProduto itemProduto)throws DaoException;
 	 public ItemProduto buscarPorId(int id)throws DaoException;
 	

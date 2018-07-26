@@ -1,9 +1,14 @@
 package br.com.Estoque_De_Medicamentos.sql;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +17,7 @@ import br.com.Estoque_De_Medicamentos.entidade.Funcionario;
 import br.com.Estoque_De_Medicamentos.exceptions.BusinessException;
 import br.com.Estoque_De_Medicamentos.exceptions.DaoException;
 import br.com.Estoque_De_Medicamentos.fachada.Fachada;
+import javafx.scene.control.DatePicker;
 
 public class SQLEstoque {
 	
@@ -30,23 +36,21 @@ public class SQLEstoque {
 	
 	
 	// SQL Produto
-	public static final String insert_Produto_All="insert into produto (fornecedor,"
-			+ "data_entrega,"
-			+ "quantidade,"
-			+ "id_prod) "
-			+ "values (?,?,?,?) ";
-	public static final String update_Produto_All="UPDATE produto SET fornecedor= ?, data_entrega= ?, quantidade= ?, id_prod= ? WHERE id = ?";
+	public static final String insert_Produto_All="insert into produto (nome,tipo) "
+			+ "values (?,?) ";
+	public static final String update_Produto_All="UPDATE produto SET nome= ?,tipo=?, WHERE id = ?";
 	
 	
 	
 	// SQL Item Produto
 	public static final String insert_ItemProduto_All="insert into item_produto"
-			+ "nome," + 
-			"  validade," + 
-			"  data_fabricao," + 
-			"  preco) "
-			+ "values (?,?,?,?) ";
-	public static final String update_ItemProduto_All="UPDATE item_produto SET nome=?,validade = ?, data_fabricao=?,preco=? WHERE id = ?";
+			+ " (nome," + 
+			"  data_entrada,data_fabricao,data_validade," + 
+			"  quantidade,valor," + 
+			"  id_produto,"
+			+ "id_fornecedor) "
+			+ "values (?,?,?,?,?,?,?,?) ";
+	public static final String update_ItemProduto_All="UPDATE item_produto SET nome=?,data_entrada = ?, data_fabricao=?,data_validade=?,quantidade=?,valor=? WHERE id = ?";
 	
 	
 	
@@ -98,6 +102,12 @@ public class SQLEstoque {
 	public static final String insert_Contato_All="insert into contato (descricao,tipo,id_cliente) "
 			+ "values (?,?,?) ";
 	public static final String update_Contato_All="UPDATE contato SET descricao=?,tipo=?,id_cliente = ? WHERE id = ?";
+	
+	
+	// SQL Fornecedor
+		public static final String insert_Fornecedor_All="insert into fornecedor (nome,cnpj) "
+				+ "values (?,?) ";
+		public static final String update_Fornecedor_All="UPDATE fornecedor SET nome=?,cnpj=? WHERE id = ?";
 	
 	
 	
@@ -161,5 +171,20 @@ public class SQLEstoque {
 		return null;
 
 	}
+    public static java.util.Date toDate(DatePicker datePicker) {
+        if(datePicker.getValue() == null){
+            return null;
+        }
+        LocalDate ld = datePicker.getValue();
+        Instant instant = ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+       java.util.Date date = Date.from(instant);
+
+        return date;
+    }
+    public static LocalDate toLocalDate(java.util.Date date) {
+        Instant instant = Instant.ofEpochMilli(date.getTime());
+        LocalDate localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
+        return localDate;
+    }
 	
 }

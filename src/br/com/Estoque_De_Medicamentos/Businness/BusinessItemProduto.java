@@ -14,13 +14,13 @@ public class BusinessItemProduto implements IBusinessItemProduto {
 	}
 
 	@Override
-	public void salvar(ItemProduto itemProduto) throws BusinessException {
+	public void salvar (ItemProduto itemProduto, int id_fornecedor, int id_produto) throws BusinessException {
 		try {
-			this.daoItemProduto.salvar(itemProduto);
+			this.daoItemProduto.salvar(itemProduto, id_fornecedor, id_produto);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+	
 	}
 
 	@Override
@@ -42,5 +42,7 @@ public class BusinessItemProduto implements IBusinessItemProduto {
 		}
 		return null;
 	}
+
+
 
 }
